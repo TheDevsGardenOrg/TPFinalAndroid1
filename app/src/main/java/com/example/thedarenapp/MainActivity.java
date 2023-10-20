@@ -3,7 +3,6 @@ package com.example.thedarenapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -17,9 +16,6 @@ import java.io.PrintWriter;
 
 
 
-import java.io.File;
-import java.io.IOException;
-
 public class MainActivity extends AppCompatActivity {
 
     private Email trip = new Email();
@@ -29,10 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    }
-
         Button soumission = (Button) findViewById(R.id.sendButton);
-        soumission.setOnClickListener((view  -> {
+        soumission.setOnClickListener((view -> {
             DatePicker datePicker = findViewById(R.id.datePicker);
             int day = datePicker.getDayOfMonth();
             int month = datePicker.getMonth() + 1;
@@ -40,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             enregisterDonnees();
         }));
 
+
+    }
 
     private void enregisterDonnees() {
         String datas = constituerDonnees();
@@ -64,24 +60,23 @@ public class MainActivity extends AppCompatActivity {
     private String constituerDonnees() {
         String retval = "";
 
-            trip = new Email();
-            // data
-            int theYear = ((DatePicker)findViewById(R.id.datePicker)).getYear();
-            int theMonth = ((DatePicker)findViewById(R.id.datePicker)).getMonth();
-            int theDay = ((DatePicker)findViewById(R.id.datePicker)).getDayOfMonth();
+        trip = new Email();
+        // data
+        int theYear = ((DatePicker)findViewById(R.id.datePicker)).getYear();
+        int theMonth = ((DatePicker)findViewById(R.id.datePicker)).getMonth();
+        int theDay = ((DatePicker)findViewById(R.id.datePicker)).getDayOfMonth();
 
-            EditText subject = ((EditText)findViewById(R.id.subjectText));
-            EditText message = ((EditText)findViewById(R.id.messageText));
+        EditText subject = ((EditText)findViewById(R.id.subjectText));
+        EditText message = ((EditText)findViewById(R.id.messageText));
 
         //set the values to the class
-            trip.setJour(theDay);
-            trip.setMois(theMonth);
-            trip.setAnnee(theYear);
+        trip.setJour(theDay);
+        trip.setMois(theMonth);
+        trip.setAnnee(theYear);
 
-            trip.setSujet((subject).getText().toString());
-            trip.setMessage(message.getText().toString());
+        trip.setSujet((subject).getText().toString());
+        trip.setMessage(message.getText().toString());
 
-            retval = trip.toString();
         return retval;
     }
 
