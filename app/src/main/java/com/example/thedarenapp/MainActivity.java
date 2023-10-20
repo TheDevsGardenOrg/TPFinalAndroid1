@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     private Email trip = new Email();
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         int lemois = ((DatePicker)findViewById(R.id.datePicker)).getMonth();
         int lAnnee = ((DatePicker)findViewById(R.id.datePicker)).getYear();
 
-        String nomFichier = "G"+lAnnee+lemois;
+        String nomFichier = "B"+lAnnee+lemois;
         try {
             FileOutputStream fos = openFileOutput(nomFichier, MODE_APPEND);
             PrintWriter pw = new PrintWriter(new OutputStreamWriter(fos));
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String constituerDonnees() {
         String retval = "";
+
             trip = new Email();
             // data
             int theYear = ((DatePicker)findViewById(R.id.datePicker)).getYear();
@@ -64,15 +67,15 @@ public class MainActivity extends AppCompatActivity {
             int theDay = ((DatePicker)findViewById(R.id.datePicker)).getDayOfMonth();
 
             EditText subject = ((EditText)findViewById(R.id.subjectText));
-            EditText message = ((EditText) findViewById(R.id.messageText));
+            EditText message = ((EditText)findViewById(R.id.messageText));
 
-            //set the values to the class
+        //set the values to the class
             trip.setJour(theDay);
             trip.setMois(theMonth);
             trip.setAnnee(theYear);
 
-            trip.setSujet((subject).getText().toString().toUpperCase());
-            trip.setMessage(message.getText().toString().toUpperCase());
+            trip.setSujet((subject).getText().toString());
+            trip.setMessage(message.getText().toString());
 
         return retval;
     }
