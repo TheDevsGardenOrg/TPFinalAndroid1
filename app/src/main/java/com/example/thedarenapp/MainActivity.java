@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Email trip = new Email();
+    private Email trip = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
             trip.setSujet((subject).getText().toString());
             trip.setMessage(message.getText().toString());
+            retval = trip.toString();
+            trip = null;
 
         return retval;
     }
