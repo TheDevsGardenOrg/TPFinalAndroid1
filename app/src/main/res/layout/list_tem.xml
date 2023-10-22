@@ -11,16 +11,54 @@
     <ImageView
         android:id="@+id/icon"
         android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="16dp"
         />
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text"
+                android:textAppearance="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hello"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/secondText"
+                android:textAppearance="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="world"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/thirdText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="world"
+                android:textSize="14sp" />
+        </TableRow>
+
+
+    </TableLayout>
 
 
 </LinearLayout>
