@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">TheDarenApp</string>
-    <string name="sendButton">Send</string>
-    <string name="subjectText">Insert Subject</string>
-    <string name="messageText">Insert Text</string>
+    <string name="appTitle">App Name</string>
+    <string name="textCourriel">Courriel\n</string>
+    <string name="textPass">Mot de Passe</string>
+    <string name="inscrireBTN">S\'inscrire</string>
+    <string name="textConfirm">Connexion</string>
+
 </resources>
