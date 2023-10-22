@@ -1,5 +1,6 @@
 package com.example.thedarenapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,9 +11,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        launchActivityInbox();
     }
 
-    public static void launchActivity(){
-
+    public void launchActivityInbox(){
+        Intent myInbox = new Intent(MainActivity.this, InboxActivity.class);
+        startActivity(myInbox);
     }
 }

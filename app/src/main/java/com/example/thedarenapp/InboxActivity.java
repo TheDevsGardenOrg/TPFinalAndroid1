@@ -7,6 +7,8 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,39 +17,27 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.thedarenapp.databinding.ActivityInboxBinding;
 
-public class InboxActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityInboxBinding binding;
+public class InboxActivity extends AppCompatActivity {
+    private ArrayList<String> noms = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_inbox);
 
-        binding = ActivityInboxBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        noms.add("yoyoyo");
+        noms.add("2144t");
+        noms.add("fdsfsd");
+        noms.add("jhgjhbmnb");
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_inbox);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        ListView listView = (ListView) findViewById(R.id.nomsViews);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
+        //Créer adaptateur
+        ArrayAdapter<String> adaptateurNoms = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noms);
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_inbox);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+        listView.setAdapter(adaptateurNoms);
     }
 }
