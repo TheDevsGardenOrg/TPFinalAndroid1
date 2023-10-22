@@ -18,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.thedarenapp.databinding.ActivityInboxBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InboxActivity extends AppCompatActivity {
     private ArrayList<String> noms = new ArrayList<String>();
@@ -27,17 +28,29 @@ public class InboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
 
+        ListView listView = (ListView) findViewById(R.id.nomsViews);
+
+//        List<ListItem> items = new ArrayList<>();
+//        items.add(new ListItem("Texte 1", R.drawable.icon1));
+//        CustomAdapter adapter = new CustomAdapter(this, items);
+//        listView.setAdapter(adapter);
+
+        List<Email> emails = new ArrayList<>();
+        emails.add(new Email("subject", "message"));
+        //this works ok great
+
 
         noms.add("yoyoyo");
         noms.add("2144t");
         noms.add("fdsfsd");
         noms.add("jhgjhbmnb");
 
-        ListView listView = (ListView) findViewById(R.id.nomsViews);
-
         //Créer adaptateur
-        ArrayAdapter<String> adaptateurNoms = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noms);
+        // ArrayAdapter<String> adaptateurNoms = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noms);
 
-        listView.setAdapter(adaptateurNoms);
+        //customadapter
+        CustomAdapter adapter = new CustomAdapter(this, emails);
+
+        listView.setAdapter(adapter);
     }
 }

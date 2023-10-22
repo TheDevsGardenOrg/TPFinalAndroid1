@@ -5,7 +5,10 @@ public class Email {
     private String message;
 
     //constructor par defaut
-    public Email(){}
+    public Email(String sujet, String message){
+        this.sujet = sujet;
+        this.message = message;
+    }
 
     //getters
 
