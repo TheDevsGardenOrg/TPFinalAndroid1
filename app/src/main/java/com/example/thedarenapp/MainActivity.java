@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(singleton.value);
         System.out.println(anotherSingleton.value);
 
-        launchActivityInbox();
+        launchActivityLogin();
     }
 
     public void launchActivityInbox(){
@@ -34,4 +34,11 @@ public class MainActivity extends AppCompatActivity {
         Intent mailDraft = new Intent(MainActivity.this, EmailSendHandler.class);
         startActivity(mailDraft);
     }
+
+    public void launchActivityLogin(){
+        Intent login = new Intent(MainActivity.this, loginPage.class);
+        startActivity(login);
+    }
+
 }
+//

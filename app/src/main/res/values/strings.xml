@@ -46,4 +46,10 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="textConfirm">Connexion</string>
+    <string name="appTitle">Family Toretto App</string>
+    <string name="textCourriel">Courriel</string>
+    <string name="textPass">Mot de Passe</string>
+    <string name="inscrireBTN">S\'enregistrer</string>
+    <string name="inscriptionTitle">Inscription</string>
 </resources>
