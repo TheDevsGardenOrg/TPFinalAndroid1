@@ -24,8 +24,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/text"
-                android:textAppearance="bold"
+                android:id="@+id/senderNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="hello"
@@ -37,8 +36,8 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/secondText"
-                android:textAppearance="bold"
+                android:id="@+id/subjectText"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="world"
@@ -50,7 +49,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/thirdText"
+                android:id="@+id/messageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="world"

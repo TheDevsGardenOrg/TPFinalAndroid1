@@ -13,7 +13,7 @@
         android:theme="@style/Theme.TheDarenApp"
         tools:targetApi="31">
         <activity
-            android:name=".EmailWrite"
+            android:name=".EmailSendHandler"
             android:exported="false" />
         <activity
             android:name=".InboxActivity"

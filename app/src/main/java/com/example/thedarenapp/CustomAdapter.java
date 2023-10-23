@@ -19,16 +19,20 @@ public class CustomAdapter extends ArrayAdapter<Email> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_tem, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_emails, parent, false);
         }
 
-        ListItem item = getItem(position);
+        Email item = getItem(position);
 
-        TextView textView = convertView.findViewById(R.id.text);
-        ImageView imageView = convertView.findViewById(R.id.icon);
+//        TextView sender = convertView.findViewById(R.id.senderNameText);
+        TextView sujet = convertView.findViewById(R.id.subjectText);
+        TextView message = convertView.findViewById(R.id.messageText);
+//        ImageView imageView = convertView.findViewById(R.id.icon);
 
-        textView.setText(item.getText());
-        imageView.setImageResource(item.getIconResId());
+//        sender.setText(item.getSender());
+        sujet.setText(item.getSujet());
+        message.setText(item.getMessage());
+//        imageView.setImageResource(item.getIconResId());
 
         return convertView;
     }

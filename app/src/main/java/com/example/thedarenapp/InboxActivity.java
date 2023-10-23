@@ -36,7 +36,7 @@ public class InboxActivity extends AppCompatActivity {
 //        listView.setAdapter(adapter);
 
         List<Email> emails = new ArrayList<>();
-        emails.add(new Email("subject", "message"));
+        //emails.add(new Email("subject", "message"));
         //this works ok great
 
 
@@ -46,11 +46,11 @@ public class InboxActivity extends AppCompatActivity {
         noms.add("jhgjhbmnb");
 
         //Créer adaptateur
-        // ArrayAdapter<String> adaptateurNoms = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noms);
+         ArrayAdapter<String> adaptateurNoms = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noms);
 
         //customadapter
-        CustomAdapter adapter = new CustomAdapter(this, emails);
+//        CustomAdapter adapter = new CustomAdapter(this, emails);
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(adaptateurNoms);
     }
 }
