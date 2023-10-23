@@ -1,0 +1,126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="1132dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="308dp"
+                android:layout_height="62dp"
+                android:text="@string/inscriptionTitle"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                tools:layout_editor_absoluteX="53dp"
+                tools:layout_editor_absoluteY="86dp" />
+
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="135dp"
+                android:layout_height="43dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Prénom"
+                tools:layout_editor_absoluteX="53dp"
+                tools:layout_editor_absoluteY="183dp" />
+
+            <EditText
+                android:id="@+id/editTextText5"
+                android:layout_width="135dp"
+                android:layout_height="43dp"
+                android:layout_marginEnd="44dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Nom"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="183dp" />
+
+            <EditText
+                android:id="@+id/editTextText2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginBottom="24dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Profession"
+                app:layout_constraintBottom_toTopOf="@+id/editTextText3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextText3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="52dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Courriel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="306dp" />
+
+            <EditText
+                android:id="@+id/editTextText8"
+                android:layout_width="151dp"
+                android:layout_height="41dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Numéro civil"
+                tools:layout_editor_absoluteX="52dp"
+                tools:layout_editor_absoluteY="804dp" />
+
+            <EditText
+                android:id="@+id/editTextText9"
+                android:layout_width="151dp"
+                android:layout_height="41dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Courriel"
+                tools:layout_editor_absoluteX="59dp"
+                tools:layout_editor_absoluteY="858dp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adresse"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="729dp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date de naissance"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="45dp"
+                tools:layout_editor_absoluteY="386dp" />
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="320dp"
+                android:layout_height="253dp"
+                tools:layout_editor_absoluteX="45dp"
+                tools:layout_editor_absoluteY="431dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
