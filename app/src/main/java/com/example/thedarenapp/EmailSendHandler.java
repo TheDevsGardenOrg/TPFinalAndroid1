@@ -16,7 +16,7 @@ import java.util.Date;
 public class EmailSendHandler extends AppCompatActivity {
     private Email email = null;
     Date myDate = new Date();
-//comment
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
