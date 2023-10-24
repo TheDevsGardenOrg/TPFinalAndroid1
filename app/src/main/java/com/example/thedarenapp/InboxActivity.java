@@ -40,17 +40,17 @@ public class InboxActivity extends AppCompatActivity {
         //this works ok great
 
 
-        noms.add("yoyoyo");
-        noms.add("2144t");
-        noms.add("fdsfsd");
-        noms.add("jhgjhbmnb");
+        //noms.add("yoyoyo");
+       // noms.add("2144t");
+       // noms.add("fdsfsd");
+        //noms.add("jhgjhbmnb");
 
         //Créer adaptateur
-         ArrayAdapter<String> adaptateurNoms = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noms);
+ //        ArrayAdapter<String> adaptateurNoms = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noms);
 
         //customadapter
-//        CustomAdapter adapter = new CustomAdapter(this, emails);
+        CustomAdapter adapter = new CustomAdapter(this, emails);
 
-        listView.setAdapter(adaptateurNoms);
+        listView.setAdapter(adapter);
     }
 }

@@ -52,4 +52,16 @@
     <string name="textPass">Mot de Passe</string>
     <string name="inscrireBTN">S\'enregistrer</string>
     <string name="inscriptionTitle">Inscription</string>
+    <string name="btnRetour">Retour</string>
+    <string name="btnSoumettre">Soumettre</string>
+    <string name="dateNaissance">Date de naissance</string>
+    <string name="addresseLabel">Address</string>
+    <string name="paysLabel">Pays</string>
+    <string name="provinceLabel">Province</string>
+    <string name="postalLabel">Code Postal</string>
+    <string name="rueLabel">Rue</string>
+    <string name="numeroLabel">Numéro Civil</string>
+    <string name="courrielCreateLabel">Courriel</string>
+    <string name="professionLabel">Profession</string>
+    <string name="nomLabel">Nom</string>
 </resources>

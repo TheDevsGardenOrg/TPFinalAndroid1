@@ -22,6 +22,9 @@
             android:name=".EmailSendHandler"
             android:exported="false" />
         <activity
+            android:name=".inscriptionPage"
+            android:exported="false" />
+        <activity
             android:name=".InboxActivity"
             android:exported="false"
             android:label="@string/title_activity_inbox"
