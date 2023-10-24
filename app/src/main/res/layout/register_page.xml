@@ -25,13 +25,13 @@
                 android:text="@string/inscriptionTitle"
                 android:textAlignment="center"
                 android:textSize="34sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText"
+                app:layout_constraintBottom_toTopOf="@+id/prenomInput"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/prenomInput"
                 android:layout_width="135dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="52dp"
@@ -39,13 +39,13 @@
                 android:layout_marginEnd="15dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Prénom"
-                app:layout_constraintEnd_toStartOf="@+id/editTextText5"
+                android:text="@string/prenomLabel"
+                app:layout_constraintEnd_toStartOf="@+id/nomInput"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
             <EditText
-                android:id="@+id/editTextText5"
+                android:id="@+id/nomInput"
                 android:layout_width="135dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="36dp"
@@ -53,13 +53,13 @@
                 android:layout_marginEnd="52dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Nom"
+                android:text="@string/nomLabel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editTextText"
+                app:layout_constraintStart_toEndOf="@+id/prenomInput"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
             <EditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/professionInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="52dp"
@@ -67,44 +67,14 @@
                 android:layout_marginEnd="52dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Profession"
+                android:text="@string/professionLabel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+                app:layout_constraintTop_toBottomOf="@+id/prenomInput" />
 
             <EditText
-                android:id="@+id/editTextText3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginEnd="52dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Courriel"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
-
-            <EditText
-                android:id="@+id/editTextText4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginEnd="52dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Mot de passe"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
-
-            <EditText
-                android:id="@+id/editTextText7"
+                android:id="@+id/motPassInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="52dp"
@@ -112,11 +82,26 @@
                 android:layout_marginEnd="52dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Confirmer mot de passe"
+                android:text="@string/motPassLabel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+                app:layout_constraintTop_toBottomOf="@+id/professionInput" />
+
+            <EditText
+                android:id="@+id/motPassInput2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="52dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="@string/motPassLabel2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/motPassInput" />
 
             <TextView
                 android:id="@+id/textView"
@@ -125,12 +110,12 @@
                 android:layout_marginStart="85dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="85dp"
-                android:text="Date de Naissance"
+                android:text="@string/dateNaissance"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+                app:layout_constraintTop_toBottomOf="@+id/motPassInput2" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -139,7 +124,7 @@
                 android:layout_marginStart="85dp"
                 android:layout_marginTop="31dp"
                 android:layout_marginEnd="85dp"
-                android:text="Adresse"
+                android:text="@string/addresseLabel"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +143,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <EditText
-                android:id="@+id/editTextText9"
+                android:id="@+id/numeroCivilInput"
                 android:layout_width="125dp"
                 android:layout_height="39dp"
                 android:layout_marginStart="52dp"
@@ -166,28 +151,28 @@
                 android:layout_marginEnd="63dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Numéro civil"
+                android:text="@string/numeroLabel"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/editTextText11"
+                app:layout_constraintEnd_toStartOf="@+id/rueInput"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <EditText
-                android:id="@+id/editTextText11"
+                android:id="@+id/rueInput"
                 android:layout_width="122dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="41dp"
                 android:layout_marginEnd="52dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Rue"
+                android:text="@string/rueLabel"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editTextText9"
+                app:layout_constraintStart_toEndOf="@+id/numeroCivilInput"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <EditText
-                android:id="@+id/editTextText12"
+                android:id="@+id/codePostalInput"
                 android:layout_width="188dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="110dp"
@@ -195,14 +180,14 @@
                 android:layout_marginEnd="110dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Code Postal"
+                android:text="@string/postalLabel"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText9" />
+                app:layout_constraintTop_toBottomOf="@+id/numeroCivilInput" />
 
             <EditText
-                android:id="@+id/editTextText13"
+                android:id="@+id/paysInput"
                 android:layout_width="188dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="110dp"
@@ -210,14 +195,14 @@
                 android:layout_marginEnd="110dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Pays"
+                android:text="@string/paysLabel"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText14" />
+                app:layout_constraintTop_toBottomOf="@+id/provinceInput" />
 
             <EditText
-                android:id="@+id/editTextText14"
+                android:id="@+id/provinceInput"
                 android:layout_width="188dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="110dp"
@@ -225,38 +210,38 @@
                 android:layout_marginEnd="110dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Province"
+                android:text="@string/provinceLabel"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText12" />
+                app:layout_constraintTop_toBottomOf="@+id/codePostalInput" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnRetour"
                 android:layout_width="106dp"
                 android:layout_height="47dp"
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="51dp"
                 android:layout_marginEnd="100dp"
                 android:layout_marginBottom="102dp"
-                android:text="Retour"
+                android:text="@string/retourLabel"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button3"
+                app:layout_constraintEnd_toStartOf="@+id/btnSoumettre"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText13" />
+                app:layout_constraintTop_toBottomOf="@+id/paysInput" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnSoumettre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="51dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginBottom="101dp"
-                android:text="Soumettre"
+                android:text="@string/soumettreLabel"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText13" />
+                app:layout_constraintStart_toEndOf="@+id/btnRetour"
+                app:layout_constraintTop_toBottomOf="@+id/paysInput" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

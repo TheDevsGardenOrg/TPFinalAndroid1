@@ -3,18 +3,17 @@ package com.example.thedarenapp;
 import java.util.Date;
 
 public class Email {
-    private String sujet;
-    private String message;
     private String sender;
     private String recipient;
+    private String sujet;
+    private String message;
     private Date date;
-
     public Email(){};
-    public Email(String sujet, String message, String sender, String recipient, Date date){
-        this.sujet = sujet;
-        this.message = message;
+    public Email(String sender, String recipient, String sujet, String message, Date date){
         this.sender = sender;
         this.recipient = recipient;
+        this.sujet = sujet;
+        this.message = message;
         this.date = date;
     }
 
@@ -45,6 +44,7 @@ public class Email {
         retval.append(sujet+";");
         retval.append(message+";");
         retval.append(date+";");
+        retval.append("\n");
         return retval.toString();
     }
 

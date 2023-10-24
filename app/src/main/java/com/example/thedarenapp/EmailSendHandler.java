@@ -2,9 +2,9 @@ package com.example.thedarenapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,6 +16,10 @@ import java.util.Date;
 public class EmailSendHandler extends AppCompatActivity {
     private Email email = null;
     Date myDate = new Date();
+    private Context mContext;
+    public void EmailReadHandler(Context context) {
+        mContext = context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,7 @@ public class EmailSendHandler extends AppCompatActivity {
         String datas = constituerDonnees();
         String dateString = myDate.toString();
 
-        String nomFichier = "B"+dateString;
+        String nomFichier = "emailDatabase.txt";
         try {
             FileOutputStream fos = openFileOutput(nomFichier, MODE_APPEND);
             PrintWriter pw = new PrintWriter(new OutputStreamWriter(fos));
@@ -60,7 +64,7 @@ public class EmailSendHandler extends AppCompatActivity {
            // data
            EditText subject = ((EditText) findViewById(R.id.sujet));
            EditText message = ((EditText) findViewById(R.id.message));
-           String sender = "ibel@gmail.com";
+           String sender = "ibel@gmail.com"; // we might need to implement contexts //has to be changed to the current logged in user
            EditText recipient = ((EditText) findViewById(R.id.recipient));
 
            //set the values to the class
@@ -77,4 +81,6 @@ public class EmailSendHandler extends AppCompatActivity {
        }
         return retval;
     }
+
+
 }

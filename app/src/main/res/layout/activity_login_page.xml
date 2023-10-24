@@ -81,7 +81,7 @@
             app:layout_constraintBottom_toTopOf="@+id/inputCourriel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelPass" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/labelPass"
