@@ -1,6 +1,8 @@
 package com.example.thedarenapp;
 
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -18,6 +20,8 @@ import java.util.Scanner;
 
 public class EmailReadHandler extends AppCompatActivity {
     private Email email = null;
+    ArrayList<Email> emails = new ArrayList<>(); //global variable
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,12 @@ public class EmailReadHandler extends AppCompatActivity {
 
     public ArrayList<Email> readFileAndSaveInstances() {
         String fileName = "emailDatabase.txt";
-        File file = new File(getFilesDir(), fileName);
-        ArrayList<Email> emails = new ArrayList<>();
+
+        // problem to fix later 2 hours died here, do not attempt
+        String filePath = "/data/data/com.example.thedarenapp/files/emailDatabase.txt";
+        //File file = new File(getFilesDir(), fileName);
         try {
-            FileInputStream fis = new FileInputStream(file);
+            FileInputStream fis = new FileInputStream(filePath);
             Scanner scanner = new Scanner(fis);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
