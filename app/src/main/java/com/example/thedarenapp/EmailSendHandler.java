@@ -64,7 +64,7 @@ public class EmailSendHandler extends AppCompatActivity {
            // data
            EditText subject = ((EditText) findViewById(R.id.sujet));
            EditText message = ((EditText) findViewById(R.id.message));
-           String sender = "ibel@gmail.com"; //has to be changed to the current logged in user
+           String sender = "ibel@gmail.com"; // we might need to implement contexts //has to be changed to the current logged in user
            EditText recipient = ((EditText) findViewById(R.id.recipient));
 
            //set the values to the class
