@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(singleton.value);
         System.out.println(anotherSingleton.value);
 
-        launchActivitySendMail();
+        launchActivityInbox();
     }
 
     public void launchActivityInbox(){

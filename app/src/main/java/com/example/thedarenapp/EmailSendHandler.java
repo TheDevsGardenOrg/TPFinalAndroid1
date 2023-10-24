@@ -2,23 +2,24 @@ package com.example.thedarenapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class EmailSendHandler extends AppCompatActivity {
     private Email email = null;
     Date myDate = new Date();
+    private Context mContext;
+    public void EmailReadHandler(Context context) {
+        mContext = context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
