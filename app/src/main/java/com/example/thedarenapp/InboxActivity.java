@@ -1,5 +1,6 @@
 package com.example.thedarenapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -8,14 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.thedarenapp.databinding.ActivityInboxBinding;
+//import androidx.navigation.NavController;
+//import androidx.navigation.Navigation;
+//import androidx.navigation.ui.AppBarConfiguration;
+//import androidx.navigation.ui.NavigationUI;
+//
+//import com.example.thedarenapp.databinding.ActivityInboxBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +37,19 @@ public class InboxActivity extends AppCompatActivity {
 
         EmailAdapter adapter = new EmailAdapter(this, emails);
         mListView.setAdapter(adapter);
+
+
+//  Pour ouvrir la view en cliquant sur le btn "New Email"
+
+        Button openIntentButton = findViewById(R.id.newEmail);
+
+        openIntentButton.setOnClickListener(view -> {
+            Intent emailSend = new Intent(InboxActivity.this, EmailSendHandler.class);
+            startActivity(emailSend);
+        });
+
+
     }
-
-
 }
 
 //package com.example.oct18adaptateurs;
@@ -71,5 +83,4 @@ public class InboxActivity extends AppCompatActivity {
 //        listView.setAdapter(adapter);
 //    }
 //}
-//
-//
+

@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.Date;
 
+
 public class EmailSendHandler extends AppCompatActivity {
     private Email email = null;
     Date myDate = new Date();
@@ -20,7 +21,6 @@ public class EmailSendHandler extends AppCompatActivity {
     public void EmailReadHandler(Context context) {
         mContext = context;
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
