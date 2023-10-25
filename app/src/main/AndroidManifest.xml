@@ -20,15 +20,19 @@
             android:exported="false" />
         <activity
             android:name=".EmailSendHandler"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light"
+            />
         <activity
-            android:name=".inscriptionPage"
-            android:exported="false" />
+            android:name=".pageCourriel"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light"
+            />
         <activity
             android:name=".InboxActivity"
             android:exported="false"
             android:label="@string/title_activity_inbox"
-            android:theme="@style/Theme.TheDarenApp" />
+            android:theme="@style/Theme.AppCompat.Light"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

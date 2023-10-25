@@ -3,6 +3,7 @@ package com.example.thedarenapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,14 +20,12 @@ public class registerPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.register_page);
+
             Button soumission = (Button) findViewById(R.id.btnSoumettre);
-            soumission.setOnClickListener((view -> {
-                enregistrerInformations();
-            }));
+            soumission.setOnClickListener((view -> enregistrerInformations()));
+
             Button retour = (Button) findViewById(R.id.btnRetour);
-            retour.setOnClickListener((view -> {
-                launchActivityLogin();
-            }));
+            retour.setOnClickListener((view -> launchActivityLogin()));
         } catch (Exception e) {
             e.printStackTrace();
             // Handle the exception, log it, or display an error message.
@@ -39,18 +38,27 @@ public class registerPage extends AppCompatActivity {
         EditText prenom = findViewById(R.id.prenomInput);
         EditText nom = findViewById(R.id.nomInput);
         EditText courriel = findViewById(R.id.courrielAccountInput);
+        EditText motPass = findViewById(R.id.motPassInput);
+        DatePicker datePicker = findViewById(R.id.datePicker);
         EditText numeroCivil = findViewById(R.id.numeroCivilInput);
         EditText rue = findViewById(R.id.rueInput);
         EditText codePostal = findViewById(R.id.codePostalInput);
         EditText province = findViewById(R.id.provinceInput);
         EditText pays = findViewById(R.id.paysInput);
         EditText profession = findViewById(R.id.professionInput);
-        EditText motPass = findViewById(R.id.motPassInput);
 
         String prenomText = prenom.getText().toString();
         String nomText = nom.getText().toString();
         String courrielText = courriel.getText().toString();
-        String dateNaissanceText = "yoyoyoy";
+
+        //Pour la date de naissance
+        datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    String selectedDate = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth);
+            }
+        );
+        String selectedDate = "yaya";
+        //////////////////////////
         String numeroCivilText = numeroCivil.getText().toString();
         String rueText = rue.getText().toString();
         String codePostalText = codePostal.getText().toString();
@@ -66,7 +74,7 @@ public class registerPage extends AppCompatActivity {
                 motPassText,  // Password
                 prenomText,
                 nomText,
-                dateNaissanceText,
+                selectedDate,
                 numeroCivilText,
                 rueText,
                 provinceText,

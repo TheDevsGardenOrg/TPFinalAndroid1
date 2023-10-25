@@ -12,7 +12,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1358dp">
+            android:layout_height="1266dp">
 
             <TextView
                 android:id="@+id/textView11"
@@ -78,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="52dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="52dp"
                 android:ems="10"
                 android:inputType="text"
@@ -86,7 +86,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/professionInput" />
+                app:layout_constraintTop_toBottomOf="@+id/courrielAccountInput" />
 
             <EditText
                 android:id="@+id/motPassInput2"
@@ -108,28 +108,42 @@
                 android:layout_width="242dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="85dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="85dp"
                 android:text="@string/dateNaissance"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/motPassInput2" />
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:spinnersShown="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="242dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="85dp"
-                android:layout_marginTop="233dp"
+                android:layout_marginTop="34dp"
                 android:layout_marginEnd="85dp"
                 android:text="@string/addresseLabel"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/courrielAccountInput" />
+                app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
             <EditText
                 android:id="@+id/numeroCivilInput"
@@ -234,17 +248,18 @@
 
             <EditText
                 android:id="@+id/courrielAccountInput"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="99dp"
-                android:layout_marginTop="38dp"
-                android:layout_marginEnd="99dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="52dp"
                 android:ems="10"
                 android:inputType="text"
                 android:text="Courriel"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/professionInput" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

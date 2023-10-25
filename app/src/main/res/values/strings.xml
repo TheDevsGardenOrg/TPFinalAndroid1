@@ -69,4 +69,10 @@
     <string name="motPassLabel2">Confimer le mot de passe</string>
     <string name="retourLabel">Retour</string>
     <string name="soumettreLabel">Soumettre</string>
+    <string name="parametre">Déconnexion</string>
+    <string name="action_mail">Envoyer un mail</string>
+    <string name="sujetChamps">Sujet</string>
+    <string name="courrielEnvoieChamps">Courriel</string>
+    <string name="contenuChamps">Contenu</string>
+    <string name="soumettre">submit</string>
 </resources>
