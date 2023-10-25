@@ -122,25 +122,14 @@
                 android:layout_width="242dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="85dp"
-                android:layout_marginTop="31dp"
+                android:layout_marginTop="233dp"
                 android:layout_marginEnd="85dp"
                 android:text="@string/addresseLabel"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/calendarView" />
-
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="317dp"
-                android:layout_height="250dp"
-                android:layout_marginStart="46dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="46dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/courrielAccountInput" />
 
             <EditText
                 android:id="@+id/numeroCivilInput"
@@ -242,6 +231,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnRetour"
                 app:layout_constraintTop_toBottomOf="@+id/paysInput" />
+
+            <EditText
+                android:id="@+id/courrielAccountInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="99dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="99dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Courriel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
