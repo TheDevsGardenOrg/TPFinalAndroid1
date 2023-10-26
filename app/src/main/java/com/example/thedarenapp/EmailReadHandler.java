@@ -58,13 +58,13 @@ public class EmailReadHandler extends AppCompatActivity {
 
     private Email parseEmail(String line) {
         String values[] = line.split(";");
-        Email retEmail = new Email(values[0], values[1], values[2], values[3], convertStringToDate(values[4]));
+        Email retEmail = new Email(values[0], values[1], values[2], convertStringToDate(values[3]));
         return retEmail;
     }
 
     private Date convertStringToDate(String dateString) {
-        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
         Date date = null;
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
         try {
             date = format.parse(dateString);
         } catch (ParseException e) {

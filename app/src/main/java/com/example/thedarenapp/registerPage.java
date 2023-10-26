@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.thedarenapp.Person;
+import com.example.thedarenapp.loginPage;
+
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -51,14 +54,9 @@ public class registerPage extends AppCompatActivity {
         String nomText = nom.getText().toString();
         String courrielText = courriel.getText().toString();
 
-        //Pour la date de naissance
-        datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
-                (view, year, monthOfYear, dayOfMonth) -> {
-                    String selectedDate = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth);
-            }
-        );
-        String selectedDate = "yaya";
-        //////////////////////////
+        // Get the selected date from the DatePicker
+        String selectedDate = getSelectedDate(datePicker);
+
         String numeroCivilText = numeroCivil.getText().toString();
         String rueText = rue.getText().toString();
         String codePostalText = codePostal.getText().toString();
@@ -67,29 +65,40 @@ public class registerPage extends AppCompatActivity {
         String professionText = profession.getText().toString();
         String motPassText = motPass.getText().toString();
 
+        // Create an Address object
+        Address address = new Address(
+                numeroCivilText,
+                rueText,
+                provinceText,
+                codePostalText,
+                paysText
+        );
 
-            // Create a Person object with the user's information
+        // Create a Person object with the user's information, including the address
         Person person = new Person(
                 courrielText, // Email
                 motPassText,  // Password
                 prenomText,
                 nomText,
                 selectedDate,
-                numeroCivilText,
-                rueText,
-                provinceText,
-                codePostalText,
-                paysText,
+                address, // Set the address
                 professionText
         );
 
-            // Write the person's information to a file
-            writePersonToFile(person);
+        // Write the person's information to a file
+        writePersonToFile(person);
 
-            // Fields are filled, you can proceed to the next activity
-            launchActivityLogin();
+        // Fields are filled, you can proceed to the next activity
+        launchActivityLogin();
     }
 
+    // Helper method to get the selected date from DatePicker
+    private String getSelectedDate(DatePicker datePicker) {
+        int year = datePicker.getYear();
+        int month = datePicker.getMonth() + 1; // Months are 0-based
+        int dayOfMonth = datePicker.getDayOfMonth();
+        return String.format("%04d-%02d-%02d", year, month, dayOfMonth);
+    }
 
     private void writePersonToFile(Person person) {
         String datas = person.toString();

@@ -76,22 +76,23 @@ public class EmailSendHandler extends AppCompatActivity {
         intent.setType("message/rfc822");
 
         enregisterDonnees();
+        startActivity(new Intent(EmailSendHandler.this, InboxActivity.class));
 
         // Fermez l'activité actuelle
-        finish();
+        //finish();
 
         // Revenez à l'activité précédente (si elle existe)
-        onBackPressed();
+        //onBackPressed();
 
         // Affichez la boîte de dialogue de sélection du client de messagerie
-        startActivity(Intent.createChooser(intent, "Choose email client:"));
+        //startActivity(Intent.createChooser(intent, "Choose email client:"));
     }
 
 
     //write email to database
     public void enregisterDonnees() {
         String datas = constituerDonnees();
-        String dateString = myDate.toString();
+        //String dateString = myDate.toString();
 
 
         String nomFichier = "emailDatabase.txt";
@@ -123,14 +124,15 @@ public class EmailSendHandler extends AppCompatActivity {
            // data
            EditText subject = ((EditText) findViewById(R.id.sujet));
            EditText message = ((EditText) findViewById(R.id.message));
-           String sender = "ibel@gmail.com"; // we might need to implement contexts //has to be changed to the current logged in user
            EditText recipient = ((EditText) findViewById(R.id.recipient));
+
 
            //set the values to the class
            email.setSujet(subject.getText().toString());
            email.setMessage(message.getText().toString());
-           email.setSender(sender);
            email.setRecipient(recipient.getText().toString());
+
+
            email.setDate(myDate);
            retval = email.toString();
            email = null;

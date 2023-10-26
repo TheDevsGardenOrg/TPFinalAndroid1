@@ -1,30 +1,25 @@
 package com.example.thedarenapp;
 
+import com.example.thedarenapp.Address;
+import com.example.thedarenapp.User;
+
 public class Person extends User {
     private String firstName;
     private String lastName;
     private String birthday;
-    private String propertyNumber;
-    private String streetName;
-    private String province;
-    private String postalCode;
-    private String country;
+    private Address address; // Use the Address class instead of individual address fields
     private String profession;
     private String email;
 
     // constructor
 
-    public Person(String email, String password, String firstName, String lastName, String birthday, String propertyNumber, String streetName, String province, String postalCode, String country, String profession) {
+    public Person(String email, String password, String firstName, String lastName, String birthday, Address address, String profession) {
         super(email, password);
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
-        this.propertyNumber = propertyNumber;
-        this.streetName = streetName;
-        this.province = province;
-        this.postalCode = postalCode;
-        this.country = country;
+        this.address = address; // Set the Address object
         this.profession = profession;
     }
 
@@ -38,32 +33,15 @@ public class Person extends User {
     }
 
     public String getEmail() {
-        return email; // Return the email field.
+        return email;
     }
-
 
     public String getBirthday() {
         return birthday;
     }
 
-    public String getPropertyNumber() {
-        return propertyNumber;
-    }
-
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getCountry() {
-        return country;
+    public Address getAddress() {
+        return address;
     }
 
     public String getProfession() {
@@ -87,43 +65,19 @@ public class Person extends User {
         this.birthday = birthday;
     }
 
-    public void setPropertyNumber(String propertyNumber) {
-        this.propertyNumber = propertyNumber;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public void setProfession(String profession) {
         this.profession = profession;
     }
 
-    @Override
     public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + getEmail() + '\'' +
-                ", birthday=" + birthday +
-                ", propertyNumber='" + propertyNumber + '\'' +
-                ", streetName='" + streetName + '\'' +
-                ", province='" + province + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", country='" + country + '\'' +
-                ", profession='" + profession + '\'' +
-                '}';
+        return firstName + ';' + lastName + ';' +
+                getEmail() + ';' +
+                birthday + ';' +
+                address + ';' +
+                profession;
     }
 }

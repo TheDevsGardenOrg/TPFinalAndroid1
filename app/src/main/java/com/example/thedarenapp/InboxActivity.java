@@ -73,7 +73,10 @@ public class InboxActivity extends AppCompatActivity {
 
 
         if(id == R.id.action_parametres) {
-            Toast.makeText(this,"Les paramètres",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Déconnexion en cours...",Toast.LENGTH_SHORT).show();
+
+            //Ici on peut set l'activité du User à null au moment du la déconnexion
+            startActivity(new Intent(InboxActivity.this, loginPage.class));
             return true;
         }
         else if (id == R.id.action_mail) {

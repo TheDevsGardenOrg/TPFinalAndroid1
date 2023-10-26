@@ -28,17 +28,31 @@ public class EmailAdapter extends ArrayAdapter<Email> {
 
         Email email = mEmails.get(position);
 
-        ImageView iconView = convertView.findViewById(R.id.icon);
+
+
         // Set the icon image here
+        //TextView senderNameView = convertView.findViewById(R.id.senderNameText);
+        //senderNameView.setText(email.getSender());
 
-        TextView senderNameView = convertView.findViewById(R.id.senderNameText);
-        senderNameView.setText(email.getSender());
+        //Default icon for the moment
+        ImageView iconView = convertView.findViewById(R.id.icon);
+        iconView.setImageResource(R.drawable.ic_action_name);
 
+        //Email you wrote to
+        TextView recipientView = convertView.findViewById(R.id.recipientText);
+        recipientView.setText(email.getRecipient());
+
+        //Name of the email
         TextView subjectView = convertView.findViewById(R.id.subjectText);
         subjectView.setText(email.getSujet());
 
+        //Contenu du message que l'utilisateur a écrit
         TextView messageView = convertView.findViewById(R.id.messageText);
         messageView.setText(email.getMessage());
+
+        //The time of the message sent
+        TextView timeView = convertView.findViewById(R.id.timeText);
+        timeView.setText(email.getDateString());
 
         return convertView;
     }

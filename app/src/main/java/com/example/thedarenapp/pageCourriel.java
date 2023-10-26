@@ -55,7 +55,7 @@ public class pageCourriel extends AppCompatActivity {
                 return;
             } else {
                 CourrielWriter.enregisterDonnees();
-                showPopup(view, sujetTitre, courrielEnvoie, contenuMessage);
+                //showPopup(view, sujetTitre, courrielEnvoie, contenuMessage);
                 // Redirect to MainActivity after showing the Popup
                 /*startActivity(new Intent(pageCourriel.this, MainActivity.class));
                 messageEntre = (TextView) findViewById(R.id.message);
@@ -66,7 +66,7 @@ public class pageCourriel extends AppCompatActivity {
         }));
     }
 
-    private void showPopup(View view, String sujet, String courriel, String contenu) {
+    /*private void showPopup(View view, String sujet, String courriel, String contenu) {
         // Inflate the popup_layout.xml
         LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.popup_layout, null);
@@ -74,7 +74,6 @@ public class pageCourriel extends AppCompatActivity {
         // Set the content to the popup
         TextView tv = popupView.findViewById(R.id.tv);
         tv.setText("\nVoici le contenu de votre message : " +"\nSujet: " + sujet + "\nCourriel: " + courriel + "\nContenu: " + contenu);
-
         // Create the popup window
         popUp = new PopupWindow(this);
         popUp.setContentView(popupView);
@@ -91,7 +90,7 @@ public class pageCourriel extends AppCompatActivity {
 
         // Displaying the popup at the specified location, + offsets
         popUp.showAtLocation(view, Gravity.CENTER, 0, 0);
-    }
+    }*/
     // this event will enable the back
     // function to the button on press
     @Override
