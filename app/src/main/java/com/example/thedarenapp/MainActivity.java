@@ -3,6 +3,8 @@ package com.example.thedarenapp;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.thedarenapp.adminFolder.AdminActivity;
 import com.example.thedarenapp.adminFolder.AdminUser;
@@ -16,6 +18,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavController navController = navHostFragment.getNavController();
+
+
 
         //main is admin validation
         new AdminUser( "admin@thedarenapp.com", "password", true);
@@ -30,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Where the app is launching
-        launchActivityMProfile();
+
     }
 
     public void launchActivityInbox(){

@@ -2,7 +2,6 @@ package com.example.thedarenapp.userJava;
 
 import android.os.Bundle;
 
-import com.example.thedarenapp.MainActivity;
 import com.example.thedarenapp.emailData.Email;
 import com.example.thedarenapp.emailData.EmailAdapter;
 import com.example.thedarenapp.emailData.EmailReadHandler;
@@ -32,7 +31,7 @@ public class InboxActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_inbox);
+        setContentView(R.layout.user_fragment_inbox);
 
 
         mListView = findViewById(R.id.listView);

@@ -28,7 +28,7 @@ public class loginPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.fragment_login_page);
 
 
         //This part is to log in actual data
