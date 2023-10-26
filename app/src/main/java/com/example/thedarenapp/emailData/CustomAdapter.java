@@ -1,4 +1,4 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.emailData;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
+import com.example.thedarenapp.R;
+
 import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<Email> {

@@ -2,8 +2,11 @@ package com.example.thedarenapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.thedarenapp.adminFolder.AdminUser;
+import com.example.thedarenapp.emailData.EmailSendHandler;
+import com.example.thedarenapp.userJava.InboxActivity;
+import com.example.thedarenapp.userJava.activeUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(singleton.value);
         System.out.println(anotherSingleton.value);
 
-        launchActivityInbox();
+
+        //Where the app is launching
+        launchActivityLogin();
     }
 
     public void launchActivityInbox(){
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchActivityLogin(){
-        Intent login = new Intent(MainActivity.this, loginPage.class);
+        Intent login = new Intent(MainActivity.this, loginPageActivity.class);
         startActivity(login);
     }
 

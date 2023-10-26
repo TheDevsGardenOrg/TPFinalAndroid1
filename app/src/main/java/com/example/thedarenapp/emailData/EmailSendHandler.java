@@ -1,4 +1,4 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.emailData;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -7,16 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.thedarenapp.R;
+import com.example.thedarenapp.userJava.InboxActivity;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;

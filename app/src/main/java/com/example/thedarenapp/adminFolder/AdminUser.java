@@ -1,4 +1,6 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.adminFolder;
+
+import com.example.thedarenapp.userJava.User;
 
 public class AdminUser extends User {
     private static final long serialVersionUID = 1L;

@@ -3,6 +3,9 @@ package com.example.thedarenapp;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.thedarenapp.userJava.Address;
+import com.example.thedarenapp.userJava.Person;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

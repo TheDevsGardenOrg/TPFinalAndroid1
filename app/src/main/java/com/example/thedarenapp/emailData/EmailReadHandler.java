@@ -1,20 +1,16 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.emailData;
 
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.File;
+import com.example.thedarenapp.R;
+
 import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 

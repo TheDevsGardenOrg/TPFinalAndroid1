@@ -1,4 +1,4 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.userJava;
 
 import java.io.Serializable;
 

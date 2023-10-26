@@ -1,4 +1,4 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.userJava;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.thedarenapp.Person;
-import com.example.thedarenapp.loginPage;
+import com.example.thedarenapp.R;
+import com.example.thedarenapp.loginPageActivity;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -119,7 +119,7 @@ public class registerPage extends AppCompatActivity {
     }
 
     public void launchActivityLogin() {
-        Intent login = new Intent(registerPage.this, loginPage.class);
+        Intent login = new Intent(registerPage.this, loginPageActivity.class);
         startActivity(login);
     }
 }

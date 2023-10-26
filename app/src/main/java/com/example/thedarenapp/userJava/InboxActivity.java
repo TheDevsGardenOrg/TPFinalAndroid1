@@ -1,29 +1,23 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.userJava;
 
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.example.thedarenapp.emailData.Email;
+import com.example.thedarenapp.emailData.EmailAdapter;
+import com.example.thedarenapp.emailData.EmailReadHandler;
+import com.example.thedarenapp.emailData.EmailSendHandler;
+import com.example.thedarenapp.R;
+import com.example.thedarenapp.loginPageActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.thedarenapp.databinding.ActivityInboxBinding;
-
 import java.util.ArrayList;
-import java.util.List;
+
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -76,7 +70,7 @@ public class InboxActivity extends AppCompatActivity {
             Toast.makeText(this,"Déconnexion en cours...",Toast.LENGTH_SHORT).show();
 
             //Ici on peut set l'activité du User à null au moment du la déconnexion
-            startActivity(new Intent(InboxActivity.this, loginPage.class));
+            startActivity(new Intent(InboxActivity.this, loginPageActivity.class));
             return true;
         }
         else if (id == R.id.action_mail) {

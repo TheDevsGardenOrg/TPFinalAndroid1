@@ -1,7 +1,4 @@
-package com.example.thedarenapp;
-
-import com.example.thedarenapp.Address;
-import com.example.thedarenapp.User;
+package com.example.thedarenapp.userJava;
 
 public class Person extends User {
     private String firstName;
