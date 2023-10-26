@@ -20,6 +20,12 @@ import java.util.List;
 public class adminDataHandler {
     private static final String FILE_NAME = "usersDatabase.txt";
 
+    /*Person{firstName='Koukou', lastName='5435435435',
+            email='IMsoHot@hotmail.com', birthday='1996-10-26',
+            address=Address{propertyNumber='256', streetName='dada',
+            province='Quebec', postalCode='J0P3P3', country='Cacnada'},
+        profession='Rich motherfucker'}*/
+
     public static boolean saveUser(Person person, Context context) {
         String dataLine = userToDataLine(person);
         try {
@@ -36,15 +42,16 @@ public class adminDataHandler {
         }
     }
 
-    public static User loadUser(String email, Context context) {
+    public static Person loadUser(String email, Context context) {
         try {
-            FileInputStream fis = context.openFileInput("usersDatabase.txt");
+            FileInputStream fis = context.openFileInput(FILE_NAME);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
             String line;
             while ((line = reader.readLine()) != null) {
-                User user = dataLineToUser(line);
-                if (user != null && user.getEmail().equals(email)) {
-                    return user;
+                Person person = dataLineToPerson(line);
+                if (person != null && person.getEmail().equals(email)) {
+                    reader.close();
+                    return person;
                 }
             }
             reader.close();
@@ -55,20 +62,20 @@ public class adminDataHandler {
         return null;
     }
 
-    public static List<User> loadAllUsers(Context context) {
-        List<User> users = new ArrayList<>();
-        File file = new File(context.getFilesDir(), "usersDatabase.txt");
+    public static List<Person> loadAllUsers(Context context) {
+        List<Person> users = new ArrayList<>();
+        File file = new File(context.getFilesDir(), FILE_NAME);
         if (!file.exists()) {
             return users;
         } else {
             try {
-                FileInputStream fis = context.openFileInput("usersDatabase.txt");
+                FileInputStream fis = context.openFileInput(FILE_NAME);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    User user = dataLineToUser(line);
-                    if (user != null) {
-                        users.add(user);
+                    Person person = dataLineToPerson(line);
+                    if (person != null) {
+                        users.add(person);
                     }
                 }
                 reader.close();
@@ -81,13 +88,11 @@ public class adminDataHandler {
     }
 
     public static boolean deleteUser(String email, Context context) {
-        List<User> users = loadAllUsers(context);
-        List<User> remainingUsers = new ArrayList<>();
+        List<Person> users = loadAllUsers(context);
+        List<Person> remainingUsers = new ArrayList<>();
         boolean deleted = false;
-        Iterator<User> iterator = users.iterator();
 
-        while (iterator.hasNext()) {
-            User user = iterator.next();
+        for (Person user : users) {
             if (!user.getEmail().equals(email)) {
                 remainingUsers.add(user);
             } else {
@@ -97,10 +102,10 @@ public class adminDataHandler {
 
         if (deleted) {
             try {
-                FileOutputStream fos = context.openFileOutput("usersDatabase.txt", Context.MODE_PRIVATE);
+                FileOutputStream fos = context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
                 PrintWriter pw = new PrintWriter(new OutputStreamWriter(fos));
-                for (User user : remainingUsers) {
-                    pw.println(userToDataLine((Person) user));
+                for (Person user : remainingUsers) {
+                    pw.println(userToDataLine(user));
                 }
                 pw.close();
                 Toast.makeText(context, "User deleted!", Toast.LENGTH_SHORT).show();
@@ -123,7 +128,7 @@ public class adminDataHandler {
                 address.getPostalCode() + ";" + address.getCountry();
     }
 
-    private static User dataLineToUser(String dataLine) {
+    private static Person dataLineToPerson(String dataLine) {
         String[] parts = dataLine.split(";");
         if (parts.length == 11) {
             String firstName = parts[0];
@@ -141,7 +146,8 @@ public class adminDataHandler {
             // Create an Address object
             Address address = new Address(propertyNumber, streetName, province, postalCode, country);
 
-            return new Person(email, password, firstName, lastName, birthday, address, profession);
+            // Return a new Person object
+            return new Person(firstName, lastName, email,password, birthday, address, profession);
         } else {
             return null;
         }

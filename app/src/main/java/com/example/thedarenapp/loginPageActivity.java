@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thedarenapp.adminFolder.AdminActivity;
 import com.example.thedarenapp.adminFolder.adminDataHandler;
 import com.example.thedarenapp.userJava.InboxActivity;
 import com.example.thedarenapp.userJava.User;
@@ -84,7 +85,7 @@ public class loginPageActivity extends AppCompatActivity {
             if (adminEmail.equalsIgnoreCase(inputEmail) && adminPassword.equals(inputPassword)) {
                 Log.d("LoginActivity", "Login successful as Admin");
                         //Doit mettre une page admin
-                Intent adminActivityIntent = new Intent(this, InboxActivity.class);
+                Intent adminActivityIntent = new Intent(this, AdminActivity.class);
                 Toast.makeText(this,"Connexion vers la nouvelle page...",Toast.LENGTH_SHORT).show();
                 this.startActivity(adminActivityIntent);
                 this.finish();

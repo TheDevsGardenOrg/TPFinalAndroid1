@@ -1,50 +1,68 @@
 package com.example.thedarenapp.adminFolder;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.example.thedarenapp.MainActivity;
 import com.example.thedarenapp.R;
-import com.example.thedarenapp.emailData.Email;
-import com.example.thedarenapp.emailData.EmailAdapter;
-import com.example.thedarenapp.emailData.EmailReadHandler;
+import com.example.thedarenapp.emailData.EmailSendHandler;
+import com.example.thedarenapp.loginPageActivity;
 import com.example.thedarenapp.userJava.Person;
+import com.example.thedarenapp.userJava.pageCourriel;
 
 import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
 
-
-    private ArrayList<String> noms = new ArrayList<String>();
     private ListView userListeView;
+    private userCustomAdapter adapter;
+    private ArrayList<Person> persons;
+    PopupWindow popUp;
+    boolean click = true;
+    EmailSendHandler CourrielWriter = new EmailSendHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_activity);
 
+        try {
+            userListeView = findViewById(R.id.listViewUsers);
 
-        userListeView = findViewById(R.id.listViewUsers);
-        //I need a handler for users
-        EmailReadHandler emailReadHandler = new EmailReadHandler();
+            // Initialize your list of persons. This should come from your user data source.
+            persons = loadUsers(); // Implement loadUsers to load your users
 
-        ArrayList<Email> emails = emailReadHandler.readFileAndSaveInstances();
+            adapter = new userCustomAdapter(this, persons);
+            userListeView.setAdapter(adapter);
 
-        //EmailAdapter adapter = new EmailAdapter(this, emails);
-        //mListView.setAdapter(adapter);
-        //mListView = findViewById(R.id.listView);
-        //EmailReadHandler emailReadHandler = new EmailReadHandler();
-        //ArrayList<Email> emails = emailReadHandler.readFileAndSaveInstances();
+            Button soumission = findViewById(R.id.adminNewEmail);
+            soumission.setOnClickListener((view -> {
+                Intent login = new Intent(AdminActivity.this, pageCourriel.class);
+                startActivity(login);
+            }));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "An error occurred", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        EmailAdapter adapter = new EmailAdapter(this, emails);
-        userListeView.setAdapter(adapter);
 
 
+    // Dummy function to show where you would load your users from
+    private ArrayList<Person> loadUsers() {
+        return new ArrayList<>(adminDataHandler.loadAllUsers(this));
     }
 
     @Override
@@ -112,4 +130,11 @@ public class AdminActivity extends AppCompatActivity {
     private void logout() {
         Toast.makeText(this, "Envoyer mail sélectionné", Toast.LENGTH_SHORT).show();
     }
+
+
+
+
+
+
+
 }
