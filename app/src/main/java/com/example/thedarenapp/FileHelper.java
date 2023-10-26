@@ -3,8 +3,6 @@ package com.example.thedarenapp;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.thedarenapp.userJava.Address;
-import com.example.thedarenapp.userJava.Person;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -14,7 +12,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class FileHelper {
+/*public class FileHelper {
 
     private static final String FILE_NAME = "usersDatabase.txt";
 
@@ -96,4 +94,4 @@ public class FileHelper {
                 address.getPostalCode() + "," +
                 address.getCountry();
     }
-}
+}*/

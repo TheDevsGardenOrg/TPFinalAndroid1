@@ -1,79 +1,115 @@
 package com.example.thedarenapp.adminFolder;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.lab123.R.id;
-import com.example.lab123.R.layout;
-import com.example.thedarenapp.FileHelper;
-import com.example.thedarenapp.userJava.User;
 
-import java.util.List;
+import com.example.thedarenapp.R;
+import com.example.thedarenapp.emailData.Email;
+import com.example.thedarenapp.emailData.EmailAdapter;
+import com.example.thedarenapp.emailData.EmailReadHandler;
+import com.example.thedarenapp.userJava.Person;
+
+import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
-    private ListView listView;
-    private ArrayAdapter<User> adapter;
-    private List<User> users;
 
-    public AdminActivity() {
-    }
 
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    private ArrayList<String> noms = new ArrayList<String>();
+    private ListView userListeView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(layout.activity_admin);
-        this.listView = (ListView)this.findViewById(id.listView);
-        this.users = FileHelper.loadAllUsers(this);
-        this.adapter = new ArrayAdapter(this, 17367043, this.users);
-        this.listView.setAdapter(this.adapter);
-        this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                User selectedUser = (User)AdminActivity.this.users.get(position);
-                AdminActivity.this.showActionDialog(selectedUser);
-            }
-        });
+        setContentView(R.layout.admin_activity);
+
+
+        userListeView = findViewById(R.id.listViewUsers);
+        //I need a handler for users
+        EmailReadHandler emailReadHandler = new EmailReadHandler();
+
+        ArrayList<Email> emails = emailReadHandler.readFileAndSaveInstances();
+
+        //EmailAdapter adapter = new EmailAdapter(this, emails);
+        //mListView.setAdapter(adapter);
+        //mListView = findViewById(R.id.listView);
+        //EmailReadHandler emailReadHandler = new EmailReadHandler();
+        //ArrayList<Email> emails = emailReadHandler.readFileAndSaveInstances();
+
+        EmailAdapter adapter = new EmailAdapter(this, emails);
+        userListeView.setAdapter(adapter);
+
+
     }
 
-    private void showActionDialog(final User user) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Action").setItems(new String[]{"View", "Modify", "Delete"}, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case 0:
-                        AdminActivity.this.viewUser(user);
-                        break;
-                    case 1:
-                        AdminActivity.this.modifyUser(user);
-                        break;
-                    case 2:
-                        AdminActivity.this.deleteUser(user);
-                }
-
-            }
-        });
-        builder.create().show();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_admin, menu);
+        return true;
     }
 
-    private void viewUser(User user) {
-        Toast.makeText(this, user.getEmail(), 0).show();
-    }
 
-    private void modifyUser(User user) {
-    }
+    //The buttons options
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-    private void deleteUser(User user) {
-        if (FileHelper.deleteUser(user.getEmail(), this)) {
-            this.users.remove(user);
-            this.adapter.notifyDataSetChanged();
-        } else {
-            Toast.makeText(this, "Failed to delete user", 0).show();
+        int id = item.getItemId();
+
+        if (id == R.id.action_ajouterUser) {
+            ajouterUser();
+            return true;
+        } else if (id == R.id.action_supprimerUser) {
+            supprimerUser();
+            return true;
+        } else if (id == R.id.action_mail) {
+            logout();
+            return true;
+        } else if (id == R.id.action_consulterUser) {
+            consulterUser();
+            return true;
+        } else if (id == R.id.action_consulterUserInscrit) {
+            consulterUserInscrit();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
+    }
 
+    private void showUserInfoDialog(Person person) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Informations de l'utilisateur");
+        builder.setMessage(
+                "Prénom: " + person.getFirstName() + "\n" +
+                        "Nom: " + person.getLastName() + "\n" +
+                        "Email: " + person.getEmail() + "\n" +
+                        // ... ajoutez d'autres informations ici ...
+                        "Profession: " + person.getProfession()
+        );
+        builder.setPositiveButton("OK", null);
+        builder.show();
+    }
+
+    private void ajouterUser() {
+        Toast.makeText(this, "Ajouter utilisateur sélectionné", Toast.LENGTH_SHORT).show();
+    }
+
+    private void supprimerUser() {
+        Toast.makeText(this, "Supprimer utilisateur sélectionné", Toast.LENGTH_SHORT).show();
+    }
+
+    private void consulterUser() {
+        Toast.makeText(this, "Voir utilisateur sélectionné", Toast.LENGTH_SHORT).show();
+    }
+
+    private void consulterUserInscrit() {
+        Toast.makeText(this, "Voir info utilisateur sélectionné", Toast.LENGTH_SHORT).show();
+    }
+
+    private void logout() {
+        Toast.makeText(this, "Envoyer mail sélectionné", Toast.LENGTH_SHORT).show();
     }
 }

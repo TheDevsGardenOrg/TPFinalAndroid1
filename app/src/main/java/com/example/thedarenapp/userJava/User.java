@@ -1,7 +1,6 @@
 package com.example.thedarenapp.userJava;
 
 import java.io.Serializable;
-
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     private String email;
@@ -12,7 +11,6 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
     }
-
 
 
     // getters

@@ -2,12 +2,14 @@ package com.example.thedarenapp.userJava;
 
 import android.os.Bundle;
 
+import com.example.thedarenapp.MainActivity;
 import com.example.thedarenapp.emailData.Email;
 import com.example.thedarenapp.emailData.EmailAdapter;
 import com.example.thedarenapp.emailData.EmailReadHandler;
 import com.example.thedarenapp.emailData.EmailSendHandler;
 import com.example.thedarenapp.R;
 import com.example.thedarenapp.loginPageActivity;
+import com.example.thedarenapp.userJava.userData.ModificationProfil;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +32,7 @@ public class InboxActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inbox);
+        setContentView(R.layout.user_activity_inbox);
 
 
         mListView = findViewById(R.id.listView);
@@ -74,9 +76,8 @@ public class InboxActivity extends AppCompatActivity {
             return true;
         }
         else if (id == R.id.action_mail) {
-            Toast.makeText(this,"Envoyer sur la page Courriel",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(InboxActivity.this, EmailSendHandler.class));
-
+            Toast.makeText(this,"Envoyer sur la page d'utilisateur",Toast.LENGTH_SHORT).show();
+            Intent login = new Intent(InboxActivity.this, ModificationProfil.class);
             return true;
         }
         return  super.onOptionsItemSelected(item);

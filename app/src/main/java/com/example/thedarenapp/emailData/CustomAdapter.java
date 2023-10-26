@@ -21,7 +21,7 @@ public class CustomAdapter extends ArrayAdapter<Email> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_emails, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.user_list_emails, parent, false);
         }//this is where it gets sketchy
 
         Email item = getItem(position);

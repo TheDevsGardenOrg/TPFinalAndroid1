@@ -1,5 +1,6 @@
 package com.example.thedarenapp.userJava;
 
+import com.example.thedarenapp.userJava.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class registerPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            setContentView(R.layout.register_page);
+            setContentView(R.layout.user_registration);
 
             Button soumission = (Button) findViewById(R.id.btnSoumettre);
             soumission.setOnClickListener((view -> enregistrerInformations()));
@@ -76,15 +77,14 @@ public class registerPage extends AppCompatActivity {
 
         // Create a Person object with the user's information, including the address
         Person person = new Person(
-                courrielText, // Email
-                motPassText,  // Password
+                courrielText,
+                motPassText,
                 prenomText,
                 nomText,
                 selectedDate,
-                address, // Set the address
+                address,
                 professionText
         );
-
         // Write the person's information to a file
         writePersonToFile(person);
 

@@ -11,7 +11,7 @@ public class Person extends User {
     // constructor
 
     public Person(String email, String password, String firstName, String lastName, String birthday, Address address, String profession) {
-        super(email, password);
+        super(email,password);
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -71,10 +71,13 @@ public class Person extends User {
     }
 
     public String toString() {
-        return firstName + ';' + lastName + ';' +
-                getEmail() + ';' +
-                birthday + ';' +
-                address + ';' +
-                profession;
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", birthday='" + birthday +'\'' +
+                ", address=" + address + // Use the Address class for the address field
+                ", profession='" + profession + '\'' +
+                '}';
     }
 }

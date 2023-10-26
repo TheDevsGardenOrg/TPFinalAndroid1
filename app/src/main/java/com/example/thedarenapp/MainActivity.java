@@ -3,10 +3,13 @@ package com.example.thedarenapp;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.thedarenapp.adminFolder.AdminActivity;
 import com.example.thedarenapp.adminFolder.AdminUser;
 import com.example.thedarenapp.emailData.EmailSendHandler;
 import com.example.thedarenapp.userJava.InboxActivity;
 import com.example.thedarenapp.userJava.activeUser;
+import com.example.thedarenapp.userJava.userData.ModificationProfil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Where the app is launching
-        launchActivityLogin();
+        launchActivityMProfile();
     }
 
     public void launchActivityInbox(){
@@ -43,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
     public void launchActivityLogin(){
         Intent login = new Intent(MainActivity.this, loginPageActivity.class);
         startActivity(login);
+    }
+
+    public void launchActivityAdmin(){
+        Intent admin = new Intent(MainActivity.this, AdminActivity.class);
+        startActivity(admin);
+    }
+
+    public void launchActivityMProfile(){
+        Intent login = new Intent(MainActivity.this, ModificationProfil.class);
+        startActivity(login);
+
     }
 
 }

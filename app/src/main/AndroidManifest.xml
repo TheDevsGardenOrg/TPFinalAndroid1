@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TheDarenApp"
         tools:targetApi="31">
         <activity
+            android:name=".userJava.userData.ModificationProfil"
+            android:exported="false" />
+        <activity
             android:name=".loginPageActivity"
             android:exported="false" />
         <activity
@@ -21,18 +24,20 @@
         <activity
             android:name=".emailData.EmailSendHandler"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light"
-            />
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".adminFolder.AdminActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".userJava.pageCourriel"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light"
-            />
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".userJava.InboxActivity"
             android:exported="false"
             android:label="@string/title_activity_inbox"
-            android:theme="@style/Theme.AppCompat.Light"/>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -11,9 +11,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thedarenapp.adminFolder.adminDataHandler;
 import com.example.thedarenapp.userJava.InboxActivity;
 import com.example.thedarenapp.userJava.User;
 import com.example.thedarenapp.userJava.registerPage;
+
+
+
+
 
 public class loginPageActivity extends AppCompatActivity {
 
@@ -61,7 +66,7 @@ public class loginPageActivity extends AppCompatActivity {
 
         //USER PART
         if (selectedAccountType == R.id.userButton) {
-            User user = FileHelper.loadUser(inputEmail, this);
+            User user = adminDataHandler.loadUser(inputEmail, this);
             if (user != null && user.getPassword().equals(inputPassword)) {
                 Log.d("LoginActivity", "Login successful as User");
                 Intent userActivityIntent = new Intent(this, InboxActivity.class);

@@ -19,16 +19,24 @@ public class EmailReadHandler extends AppCompatActivity {
     ArrayList<Email> emails = new ArrayList<>(); //global variable
 
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_emails);
+        setContentView(R.layout.user_list_emails);
         try {
             readFileAndSaveInstances();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
+
 
     public ArrayList<Email> readFileAndSaveInstances() {
         String fileName = "emailDatabase.txt";
@@ -57,7 +65,6 @@ public class EmailReadHandler extends AppCompatActivity {
         Email retEmail = new Email(values[0], values[1], values[2], convertStringToDate(values[3]));
         return retEmail;
     }
-
     private Date convertStringToDate(String dateString) {
         Date date = null;
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
@@ -68,7 +75,4 @@ public class EmailReadHandler extends AppCompatActivity {
         }
         return date;
     }
-
-//call the custom adapter and use it to populate the list
-
 }

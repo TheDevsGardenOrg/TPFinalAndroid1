@@ -25,7 +25,7 @@ public class EmailAdapter extends ArrayAdapter<Email> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_emails, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.user_list_emails, parent, false);
         }
 
         Email email = mEmails.get(position);
