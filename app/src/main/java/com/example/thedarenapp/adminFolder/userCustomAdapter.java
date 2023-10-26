@@ -9,13 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thedarenapp.R;
-import com.example.thedarenapp.userJava.Person;
 
 import java.util.List;
 
-public class userCustomAdapter extends ArrayAdapter<Person> {
+public class userCustomAdapter extends ArrayAdapter<userTemplate> {
 
-    public userCustomAdapter(Context context, List<Person> items) {
+    public userCustomAdapter(Context context, List<userTemplate> items) {
         super(context, 0, items);
     }
 
@@ -25,19 +24,33 @@ public class userCustomAdapter extends ArrayAdapter<Person> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.admin_user_list_view, parent, false);
         }
 
-        Person person = getItem(position);
+        userTemplate user = getItem(position);
 
-        ImageView iconView = convertView.findViewById(R.id.icon);
-        TextView emailView = convertView.findViewById(R.id.courrielNameAV);
-        TextView firstNameView = convertView.findViewById(R.id.prenomAV);
-        TextView lastNameView = convertView.findViewById(R.id.nomAV);
-        TextView professionView = convertView.findViewById(R.id.professionAV);
+        if (user != null) {
+            // Access the ImageView and TextViews in the layout
+            ImageView iconView = convertView.findViewById(R.id.icon);
+            TextView emailText = convertView.findViewById(R.id.courrielNameAV);
+            TextView firstNameText = convertView.findViewById(R.id.prenomAV);
+            TextView lastNameText = convertView.findViewById(R.id.nomAV);
+            TextView professionText = convertView.findViewById(R.id.professionAV);
 
-        iconView.setImageResource(R.drawable.ic_action_name);
-        emailView.setText(person.getEmail());
-        firstNameView.setText(person.getFirstName());
-        lastNameView.setText(person.getLastName());
-        professionView.setText(person.getProfession());
+            // Set the content for the views
+            if (iconView != null) {
+                iconView.setImageResource(R.drawable.ic_action_name); // You might want to change the icon
+            }
+            if (emailText != null) {
+                emailText.setText(user.getEmail());
+            }
+            if (firstNameText != null) {
+                firstNameText.setText(user.getFirstName());
+            }
+            if (lastNameText != null) {
+                lastNameText.setText(user.getLastName());
+            }
+            if (professionText != null) {
+                professionText.setText(user.getProfession());
+            }
+        }
 
         return convertView;
     }

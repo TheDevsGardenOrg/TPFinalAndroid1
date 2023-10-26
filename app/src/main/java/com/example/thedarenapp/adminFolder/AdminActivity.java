@@ -17,18 +17,20 @@ import android.widget.Toast;
 
 import com.example.thedarenapp.MainActivity;
 import com.example.thedarenapp.R;
+import com.example.thedarenapp.emailData.CustomAdapter;
 import com.example.thedarenapp.emailData.EmailSendHandler;
 import com.example.thedarenapp.loginPageActivity;
 import com.example.thedarenapp.userJava.Person;
 import com.example.thedarenapp.userJava.pageCourriel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
 
-    private ListView userListeView;
-    private userCustomAdapter adapter;
-    private ArrayList<Person> persons;
+    private ListView listViewUsers;
+    private userCustomAdapter userAdapter;
+    private List<userTemplate> userList;
     PopupWindow popUp;
     boolean click = true;
     EmailSendHandler CourrielWriter = new EmailSendHandler();
@@ -39,13 +41,18 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.admin_activity);
 
         try {
-            userListeView = findViewById(R.id.listViewUsers);
+            listViewUsers = findViewById(R.id.listViewUsers);
+            userList = loadUsers(); // Update this method to return List<userTemplate>
+            userAdapter = new userCustomAdapter(this, userList);
+            listViewUsers.setAdapter(userAdapter);
 
-            // Initialize your list of persons. This should come from your user data source.
-            persons = loadUsers(); // Implement loadUsers to load your users
+            listViewUsers.setOnItemClickListener((parent, view, position, id) -> {
+                userTemplate selectedUser = userAdapter.getItem(position);
+                if (selectedUser != null) {
+                    showUserInfoDialog(selectedUser);
+                }
+            });
 
-            adapter = new userCustomAdapter(this, persons);
-            userListeView.setAdapter(adapter);
 
             Button soumission = findViewById(R.id.adminNewEmail);
             soumission.setOnClickListener((view -> {
@@ -58,12 +65,25 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
+    private List<userTemplate> loadUsers() {
+        List<userTemplate> users = new ArrayList<>();
 
+        users.add(new userTemplate("user1@example.com", "John", "Doe", "Engineer"));
+        users.add(new userTemplate("user2@example.com", "Jane", "Doe", "Doctor"));
+        users.add(new userTemplate("user3@example.com", "Alice", "Johnson", "Teacher"));
+        users.add(new userTemplate("user4@example.com", "Bob", "Smith", "Driver"));
+
+        // Add more users as needed
+
+        return users;
+    }
 
     // Dummy function to show where you would load your users from
-    private ArrayList<Person> loadUsers() {
-        return new ArrayList<>(adminDataHandler.loadAllUsers(this));
-    }
+    /*private List<userTemplate> loadUsers() {
+        // Load your userTemplates from wherever they are stored
+        // For example:
+        return new ArrayList<>();
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,6 +91,18 @@ public class AdminActivity extends AppCompatActivity {
         return true;
     }
 
+    private void showUserInfoDialog(userTemplate user) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Informations de l'utilisateur");
+        builder.setMessage(
+                "Prénom: " + user.getFirstName() + "\n" +
+                        "Nom: " + user.getLastName() + "\n" +
+                        "Email: " + user.getEmail() + "\n" +
+                        "Profession: " + user.getProfession()
+        );
+        builder.setPositiveButton("OK", null);
+        builder.show();
+    }
 
     //The buttons options
     @Override

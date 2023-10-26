@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.thedarenapp.R;
 import com.example.thedarenapp.userJava.InboxActivity;
+import com.example.thedarenapp.userJava.pageCourriel;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -73,7 +74,7 @@ public class EmailSendHandler extends AppCompatActivity {
         intent.setType("message/rfc822");
 
         enregisterDonnees();
-        startActivity(new Intent(EmailSendHandler.this, InboxActivity.class));
+        //startActivity(new Intent(EmailSendHandler.this, InboxActivity.class));
 
         // Fermez l'activité actuelle
         //finish();
@@ -82,7 +83,7 @@ public class EmailSendHandler extends AppCompatActivity {
         //onBackPressed();
 
         // Affichez la boîte de dialogue de sélection du client de messagerie
-        //startActivity(Intent.createChooser(intent, "Choose email client:"));
+        startActivity(Intent.createChooser(intent, "Choose email client:"));
     }
 
 
@@ -113,7 +114,7 @@ public class EmailSendHandler extends AppCompatActivity {
 
 
 
-    private String constituerDonnees() {
+    public String constituerDonnees() {
         String retval = "";
 
        try {

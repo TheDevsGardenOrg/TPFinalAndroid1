@@ -1,23 +1,31 @@
 package com.example.thedarenapp.userJava;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.thedarenapp.MainActivity;
+import com.example.thedarenapp.adminFolder.AdminActivity;
 import com.example.thedarenapp.emailData.EmailSendHandler;
 import com.example.thedarenapp.R;
 
 public class pageCourriel extends AppCompatActivity {
     PopupWindow popUp;
     boolean click = true;
-    EmailSendHandler CourrielWriter = new EmailSendHandler();
 
 
     @Override
@@ -47,45 +55,32 @@ public class pageCourriel extends AppCompatActivity {
                 Toast.makeText(this, "Les champs doivent être remplis!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                CourrielWriter.enregisterDonnees();
-                //showPopup(view, sujetTitre, courrielEnvoie, contenuMessage);
-                // Redirect to MainActivity after showing the Popup
-                /*startActivity(new Intent(pageCourriel.this, MainActivity.class));
-                messageEntre = (TextView) findViewById(R.id.message);
-                btnRepondre = (Button) findViewById(R.id.repondreMessage);
-                * */
-
+                sendEmail( sujetTitre, courrielEnvoie, contenuMessage);
             }
         }));
     }
 
-    /*private void showPopup(View view, String sujet, String courriel, String contenu) {
-        // Inflate the popup_layout.xml
-        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View popupView = layoutInflater.inflate(R.layout.popup_layout, null);
+    public void sendEmail(String subject, String content, String to_email) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{to_email});
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, content);
+        intent.setType("message/rfc822");
 
-        // Set the content to the popup
-        TextView tv = popupView.findViewById(R.id.tv);
-        tv.setText("\nVoici le contenu de votre message : " +"\nSujet: " + sujet + "\nCourriel: " + courriel + "\nContenu: " + contenu);
-        // Create the popup window
-        popUp = new PopupWindow(this);
-        popUp.setContentView(popupView);
-        popUp.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
-        popUp.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-        popUp.setFocusable(true);
-        popUp.setOnDismissListener(() -> {
-            startActivity(new Intent(pageCourriel.this, InboxActivity.class));
-        });
+        Toast.makeText(pageCourriel.this, "Courriel envoyé!",Toast.LENGTH_SHORT).show();
+        //startActivity(new Intent(pageCourriel.this, AdminActivity.class));
 
-        // Close the popup and redirect when the Close button is pressed
-        Button closePopupButton = popupView.findViewById(R.id.closePopupButton);
-        closePopupButton.setOnClickListener(v -> popUp.dismiss());
+        // Fermez l'activité actuelle
+        //finish();
 
-        // Displaying the popup at the specified location, + offsets
-        popUp.showAtLocation(view, Gravity.CENTER, 0, 0);
-    }*/
-    // this event will enable the back
-    // function to the button on press
+        // Revenez à l'activité précédente (si elle existe)
+        //onBackPressed();
+
+        // Affichez la boîte de dialogue de sélection du client de messagerie
+        startActivity(Intent.createChooser(intent, "Choose email client:"));
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
