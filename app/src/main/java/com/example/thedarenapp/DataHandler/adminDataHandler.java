@@ -1,13 +1,13 @@
-package com.example.thedarenapp.adminFolder;
+package com.example.thedarenapp.DataHandler;
 
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
-import com.example.thedarenapp.userJava.Address;
-import com.example.thedarenapp.userJava.Person;
-import com.example.thedarenapp.userJava.User;
+import com.example.thedarenapp.Data.Address;
+import com.example.thedarenapp.Data.Person;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,23 +16,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.AbstractCollection;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class adminDataHandler {
     private static final String FILE_NAME = "UserFile.txt";
-    public static List<userTemplate> listOfUsers = new ArrayList<>();
-
-
-    /*Person{firstName='Koukou', lastName='5435435435',
-            email='IMsoHot@hotmail.com', birthday='1996-10-26',
-            address=Address{propertyNumber='256', streetName='dada',
-            province='Quebec', postalCode='J0P3P3', country='Cacnada'},
-        profession='Rich motherfucker'}*/
 
     public static boolean saveUser(Person person, Context context) {
         String dataLine = userToDataLine(person);
@@ -161,14 +149,6 @@ public class adminDataHandler {
                 address.getStreetName() + "," + address.getProvince() + "," +
                 address.getPostalCode() + "," + address.getCountry();
     }
-
-
-    /*Person{firstName='Koukou', lastName='5435435435',
-            email='IMsoHot@hotmail.com', birthday='1996-10-26',
-            address=Address{propertyNumber='256', streetName='dada',
-            province='Quebec', postalCode='J0P3P3', country='Cacnada'},
-        profession='Rich motherfucker'}*/
-
 
 
     private static Person dataLineToPerson(String dataLine) {

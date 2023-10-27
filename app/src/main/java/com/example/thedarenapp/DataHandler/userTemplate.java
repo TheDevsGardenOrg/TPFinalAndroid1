@@ -1,6 +1,6 @@
-package com.example.thedarenapp.adminFolder;
+package com.example.thedarenapp.DataHandler;
 
-import com.example.thedarenapp.userJava.Address;
+import com.example.thedarenapp.Data.Address;
 
 public class userTemplate {
     private String email;

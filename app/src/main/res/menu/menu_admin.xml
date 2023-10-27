@@ -14,23 +14,8 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
 
-    <item android:id="@+id/action_supprimerUser"
-        android:title="@string/menu_admin_supprimer_user"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-
-    <item android:id="@+id/action_consulterUser"
-        android:title="@string/menu_admin_voir_user"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-
-    <item android:id="@+id/action_consulterUserInscrit"
-        android:title="@string/menu_admin_voir_info_user"
-        android:orderInCategory="100"
-        app:showAsAction="ifRoom" />
-
     <item android:id="@+id/déconnecterOption"
         android:title="@string/logOut"
         android:orderInCategory="100"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 </menu>

@@ -1,4 +1,4 @@
-package com.example.thedarenapp.emailData;
+package com.example.thedarenapp.Data;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

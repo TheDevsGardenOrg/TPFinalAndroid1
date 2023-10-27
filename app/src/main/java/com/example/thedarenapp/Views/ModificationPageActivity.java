@@ -1,21 +1,20 @@
-package com.example.thedarenapp.userJava.userData;
+package com.example.thedarenapp.Views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Scanner;
 import android.widget.Toast;
+
 import com.example.thedarenapp.R;
 
-public class ModificationProfil extends AppCompatActivity {
+public class ModificationPageActivity extends AppCompatActivity {
     private EditText[] editTexts;
 
     @Override
@@ -81,7 +80,7 @@ public class ModificationProfil extends AppCompatActivity {
                         fos.write(updatedLine.toString().getBytes());
                         fos.close();
 
-                        Toast.makeText(ModificationProfil.this, "Modifications enregistrées avec succès", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ModificationPageActivity.this, "Modifications enregistrées avec succès", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

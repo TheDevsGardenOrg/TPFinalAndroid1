@@ -1,4 +1,4 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Data;
 
 public class Person extends User {
     private String firstName;

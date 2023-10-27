@@ -1,9 +1,10 @@
-package com.example.thedarenapp.emailData;
+package com.example.thedarenapp.DataHandler;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.thedarenapp.Data.Email;
 import com.example.thedarenapp.R;
 
 import java.io.FileInputStream;
@@ -18,11 +19,6 @@ public class EmailReadHandler extends AppCompatActivity {
     private Email email = null;
     ArrayList<Email> emails = new ArrayList<>(); //global variable
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +29,6 @@ public class EmailReadHandler extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
-
 
 
     public ArrayList<Email> readFileAndSaveInstances() {

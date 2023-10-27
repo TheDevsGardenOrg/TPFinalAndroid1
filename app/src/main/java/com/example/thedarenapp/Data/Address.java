@@ -1,4 +1,4 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Data;
 
 public class Address {
     private String propertyNumber;

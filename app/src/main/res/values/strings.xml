@@ -39,7 +39,7 @@
     <string name="contenuChamps">Contenu</string>
     <string name="soumettre">submit</string>
     <string name="placeholder1">Courriel</string>
-    <string name="placeholder2">Nom et prénom</string>
+    <string name="placeholder2">Prénom</string>
     <string name="placeholder3">Profession</string>
     <string name="menu_admin_ajouter_user">Ajouter</string>
     <string name="menu_admin_supprimer_user">Supprimer</string>

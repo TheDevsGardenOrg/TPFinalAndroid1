@@ -1,6 +1,5 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Views;
 
-import com.example.thedarenapp.userJava.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,14 +9,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.thedarenapp.Data.Address;
+import com.example.thedarenapp.Data.Person;
 import com.example.thedarenapp.R;
-import com.example.thedarenapp.loginPageActivity;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class registerPage extends AppCompatActivity {
+public class RegisterPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +119,7 @@ public class registerPage extends AppCompatActivity {
     }
 
     public void launchActivityLogin() {
-        Intent login = new Intent(registerPage.this, loginPageActivity.class);
+        Intent login = new Intent(RegisterPageActivity.this, LoginPageActivity.class);
         startActivity(login);
     }
 }

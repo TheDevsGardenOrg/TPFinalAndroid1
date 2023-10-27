@@ -1,4 +1,4 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Data;
 
 import java.io.Serializable;
 public class User implements Serializable {
