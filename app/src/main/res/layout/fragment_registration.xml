@@ -5,17 +5,25 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/fragment_horizontal_margin"
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
     tools:context=".ui.login.RegistrationFragment">
 
+    <!-- refactor rename textView11 -> RegistrationPage-->
     <TextView
         android:id="@+id/RegistrationPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:hint="@string/inscriptionTitle"
+        android:text="@string/inscriptionTitle"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -23,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.172" />
 
+    <!-- refactor rename courrielAccountInput -> username-->
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
@@ -38,6 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegistrationPage" />
 
+    <!--    change motPassInput -> pasword-->
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
@@ -55,7 +65,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
+    <!--   motPassInput2 -> passwordConfirm -->
+    <EditText
+        android:id="@+id/passwordConfirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="@string/prompt_password"
+        android:hint="@string/prompt_password_confirm"
+        android:imeActionLabel="@string/action_register_in_short"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
+    <!-- refactor rename nomInput -> LastName-->
     <EditText
         android:id="@+id/LastName"
         android:layout_width="0dp"
@@ -70,8 +98,9 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirm" />
 
+    <!-- refactor rename prenomInput -> FirstName-->
     <EditText
         android:id="@+id/FirstName"
         android:layout_width="0dp"
@@ -88,7 +117,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LastName" />
 
-
+    <!-- refactor rename professionInput -> Profession-->
     <EditText
         android:id="@+id/Profession"
         android:layout_width="0dp"
@@ -106,6 +135,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FirstName" />
 
+    <!--    label dateNaissance -> DDNLabel-->
+    <TextView
+        android:id="@+id/DDNLabel"
+        android:layout_width="242dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="85dp"
+        android:text="@string/dateNaissance"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Profession" />
+
+    <!--    from datepicker rename to DDN-->
     <DatePicker
         android:id="@+id/DDN"
         android:layout_width="wrap_content"
@@ -118,10 +165,9 @@
         android:spinnersShown="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Profession" />
+        app:layout_constraintTop_toBottomOf="@+id/DDNLabel" />
 
-<!--Addresse Object-->
-
+    <!--Addresse Object-->
     <TextView
         android:id="@+id/LabelAddress"
         android:layout_width="0dp"
@@ -130,9 +176,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:text="Adresse:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DDN" />
+
 
     <EditText
         android:id="@+id/NoCivique"
@@ -180,7 +230,7 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NoCivique" />
+        app:layout_constraintTop_toBottomOf="@+id/Rue" />
 
 
     <EditText
@@ -232,9 +282,10 @@
         app:layout_constraintTop_toBottomOf="@+id/Codepost" />
 
 
-<!--Submit Button creates User and Extends Address-->
+    <!--Submit Button creates User and Extends Address-->
+
     <Button
-        android:id="@+id/login"
+        android:id="@+id/btnRetour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -242,13 +293,38 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
+        android:backgroundTint="#298050"
         android:enabled="false"
-        android:text="@string/action_register_in_short"
+        android:text="@string/retourLabel"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Pays"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.163" />
+
+    <Button
+        android:id="@+id/btnSoumettre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="#298050"
+        android:enabled="false"
+        android:text="@string/soumettreLabel"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pays"
+        app:layout_constraintVertical_bias="0.181" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -265,8 +341,6 @@
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
