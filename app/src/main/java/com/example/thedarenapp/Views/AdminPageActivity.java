@@ -10,14 +10,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.thedarenapp.Adapters.UserAdapter;
-import com.example.thedarenapp.Data.User;
 import com.example.thedarenapp.DataHandler.adminDataHandler;
 import com.example.thedarenapp.DataHandler.userTemplate;
 import com.example.thedarenapp.Data.Address;
@@ -33,8 +31,6 @@ public class AdminPageActivity extends AppCompatActivity {
     private UserAdapter userAdapter;  // Change to UserAdapter
     private List<userTemplate> userList;
 
-    private ListView listView;
-    private ArrayAdapter<User> adapter;
 
     PopupWindow popUp;
     boolean click = true;
