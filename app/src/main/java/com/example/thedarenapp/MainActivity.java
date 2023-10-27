@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Where the app is launching
-        launchActivityAdmin();
+        //launchActivityAdmin();
+        launchActivityLogin();
     }
 
     public void launchActivityInbox(){

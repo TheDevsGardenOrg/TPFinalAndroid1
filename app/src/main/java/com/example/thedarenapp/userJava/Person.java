@@ -55,7 +55,8 @@ public class Person extends User {
     }
 
     public void setEmail(String email) {
-        this.setEmail(email);
+        this.email = email;
+        ;
     }
 
     public void setBirthday(String birthday) {
@@ -71,13 +72,12 @@ public class Person extends User {
     }
 
     public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + getEmail() + '\'' +
-                ", birthday='" + birthday +'\'' +
-                ", address=" + address + // Use the Address class for the address field
-                ", profession='" + profession + '\'' +
-                '}';
+        return  firstName + ';' +
+                lastName + ';' +
+                getEmail() + ';' +
+                getPassword() + ';' + // Assuming there is a getPassword method in User class
+                birthday +';' +
+                address +';' +// Use the Address class for the address field
+                profession + ';';
     }
 }

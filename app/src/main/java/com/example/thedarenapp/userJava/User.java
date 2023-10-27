@@ -35,9 +35,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return email + ';' +
+               password + ';';
     }
 }

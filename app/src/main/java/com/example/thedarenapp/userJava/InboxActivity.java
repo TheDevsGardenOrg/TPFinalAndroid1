@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -39,12 +40,6 @@ public class InboxActivity extends AppCompatActivity {
         EmailReadHandler emailReadHandler = new EmailReadHandler();
         ArrayList<Email> emails = emailReadHandler.readFileAndSaveInstances();
 
-        //EmailAdapter adapter = new EmailAdapter(this, emails);
-        //mListView.setAdapter(adapter);
-        //mListView = findViewById(R.id.listView);
-        //EmailReadHandler emailReadHandler = new EmailReadHandler();
-        //ArrayList<Email> emails = emailReadHandler.readFileAndSaveInstances();
-
         EmailAdapter adapter = new EmailAdapter(this, emails);
         mListView.setAdapter(adapter);
 
@@ -54,7 +49,10 @@ public class InboxActivity extends AppCompatActivity {
             startActivity(new Intent(InboxActivity.this, EmailSendHandler.class));
         }));
 
-
+        /*Button newAdminMail = findViewById(R.id.action_envoyerAdmin);
+        newAdminMail.setOnClickListener((view -> {
+            startActivity(new Intent(InboxActivity.this, EmailSendHandler.class));
+        }));*/
     }
 
     @Override
@@ -75,10 +73,14 @@ public class InboxActivity extends AppCompatActivity {
             startActivity(new Intent(InboxActivity.this, loginPageActivity.class));
             return true;
         }
-        else if (id == R.id.action_mail) {
+        else if (id == R.id.iconPerson) {
             Toast.makeText(this,"Envoyer sur la page d'utilisateur",Toast.LENGTH_SHORT).show();
-            Intent login = new Intent(InboxActivity.this, ModificationProfil.class);
+            startActivity(new Intent(InboxActivity.this, ModificationProfil.class));
             return true;
+        } else if (id == R.id.action_envoyerAdmin) {
+            Intent intent = new Intent(this, pageCourriel.class);
+            intent.putExtra("recipient_email", "admin@example.com");
+            startActivity(intent);
         }
         return  super.onOptionsItemSelected(item);
     }

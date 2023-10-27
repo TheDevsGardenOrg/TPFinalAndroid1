@@ -21,8 +21,10 @@ import com.example.thedarenapp.R;
 import com.example.thedarenapp.emailData.CustomAdapter;
 import com.example.thedarenapp.emailData.EmailSendHandler;
 import com.example.thedarenapp.loginPageActivity;
+import com.example.thedarenapp.userJava.Address;
 import com.example.thedarenapp.userJava.Person;
 import com.example.thedarenapp.userJava.pageCourriel;
+import com.example.thedarenapp.userJava.userData.ModificationProfil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,7 @@ public class AdminActivity extends AppCompatActivity {
 
         try {
             listViewUsers = findViewById(R.id.listViewUsers);
-            userList = loadUsers(); // Update this method to return List<userTemplate>
+            userList = loadAllUsers(); // Update this method to return List<userTemplate>
             userAdapter = new userCustomAdapter(this, userList);
             listViewUsers.setAdapter(userAdapter);
 
@@ -65,7 +67,7 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
-    private List<userTemplate> loadUsers() {
+   /* private List<userTemplate> loadUsers() {
         List<userTemplate> users = new ArrayList<>();
 
         users.add(new userTemplate("user1@example.com", "John", "Doe", "Engineer"));
@@ -76,26 +78,28 @@ public class AdminActivity extends AppCompatActivity {
         // Add more users as needed
 
         return users;
-    }
+    }*/
 
 
-   /*private List<userTemplate> loadAllUsers() {
+    private List<userTemplate> loadAllUsers() {
         List<userTemplate> userTemplates = new ArrayList<>();
         List<Person> persons = adminDataHandler.loadAllUsers(this);
 
         for (Person person : persons) {
+            Address address = person.getAddress();  // Assuming getAddress() returns an Address object
             userTemplate user = new userTemplate(
                     person.getEmail(),
                     person.getFirstName(),
                     person.getLastName(),
-                    person.getProfession()
+                    person.getProfession(),
+                    address
             );
             userTemplates.add(user);
         }
         Log.d("AdminActivity", "Loaded " + persons.size() + " persons");
         Log.d("AdminActivity", "Loaded " + userTemplates.size() + " users");
         return userTemplates;
-    }*/
+    }
 
 
    /* private List<userTemplate> loadAllUsers() {
@@ -131,12 +135,23 @@ public class AdminActivity extends AppCompatActivity {
     private void showUserInfoDialog(userTemplate user) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Informations de l'utilisateur");
-        builder.setMessage(
-                "Prénom: " + user.getFirstName() + "\n" +
-                        "Nom: " + user.getLastName() + "\n" +
-                        "Email: " + user.getEmail() + "\n" +
-                        "Profession: " + user.getProfession()
-        );
+        Address userAddress = user.getAddress();
+
+        if (userAddress != null) {
+            builder.setMessage(
+                    "Prénom: " + user.getFirstName() + "\n" +
+                            "Nom: " + user.getLastName() + "\n" +
+                            "Email: " + user.getEmail() + "\n" +
+                            "Profession: " + user.getProfession() + "\n" +
+                            "Numéro Civil: " + userAddress.getPropertyNumber() + "\n" +
+                            "Rue: " + userAddress.getStreetName() + "\n" +
+                            "Code Postal: " + userAddress.getPostalCode() + "\n" +
+                            "Province: " + userAddress.getProvince() + "\n" +
+                            "Pays: " + userAddress.getCountry()
+            );
+        } else {
+            builder.setMessage("Les informations de l'adresse ne sont pas disponibles.");
+        }
         builder.setPositiveButton("OK", null);
         builder.show();
     }
@@ -159,7 +174,7 @@ public class AdminActivity extends AppCompatActivity {
         } else if (id == R.id.action_consulterUser) {
             consulterUser();
             return true;
-        } else if (id == R.id.action_consulterUserInscrit) {
+        } else if (id == R.id.déconnecterOption) {
             consulterUserInscrit();
             return true;
         }
@@ -193,7 +208,9 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     private void consulterUserInscrit() {
-        Toast.makeText(this, "Voir info utilisateur sélectionné", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Déconnexion en cours...", Toast.LENGTH_SHORT).show();
+        Intent logout = new Intent(AdminActivity.this, loginPageActivity.class);
+        startActivity(logout);
     }
 
     private void logout() {
