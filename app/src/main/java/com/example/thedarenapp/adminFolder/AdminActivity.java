@@ -34,7 +34,6 @@ public class AdminActivity extends AppCompatActivity {
     private List<userTemplate> userList;
     PopupWindow popUp;
     boolean click = true;
-    EmailSendHandler CourrielWriter = new EmailSendHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class AdminActivity extends AppCompatActivity {
 
         try {
             listViewUsers = findViewById(R.id.listViewUsers);
-            userList = loadAllUsers(); // Update this method to return List<userTemplate>
+            userList = loadUsers(); // Update this method to return List<userTemplate>
             userAdapter = new userCustomAdapter(this, userList);
             listViewUsers.setAdapter(userAdapter);
 
@@ -66,7 +65,7 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
-    /*private List<userTemplate> loadUsers() {
+    private List<userTemplate> loadUsers() {
         List<userTemplate> users = new ArrayList<>();
 
         users.add(new userTemplate("user1@example.com", "John", "Doe", "Engineer"));
@@ -77,10 +76,10 @@ public class AdminActivity extends AppCompatActivity {
         // Add more users as needed
 
         return users;
-    }*/
+    }
 
 
-    private List<userTemplate> loadAllUsers() {
+   /*private List<userTemplate> loadAllUsers() {
         List<userTemplate> userTemplates = new ArrayList<>();
         List<Person> persons = adminDataHandler.loadAllUsers(this);
 
@@ -96,7 +95,25 @@ public class AdminActivity extends AppCompatActivity {
         Log.d("AdminActivity", "Loaded " + persons.size() + " persons");
         Log.d("AdminActivity", "Loaded " + userTemplates.size() + " users");
         return userTemplates;
-    }
+    }*/
+
+
+   /* private List<userTemplate> loadAllUsers() {
+       List<userTemplate> userTemplates = new ArrayList<>();
+        List<Person> persons = adminDataHandler.loadAllUsers(this);
+
+
+        for (Person person : persons) {
+            userTemplates.add(new userTemplate(
+                    person.getEmail(),
+                    person.getFirstName(),
+                    person.getLastName(),
+                    person.getProfession()));
+        }
+        Log.d("AdminActivity", "Loaded " + persons.size() + " persons");
+        Log.d("AdminActivity", "Loaded " + userTemplates.size() + " users");
+        return adminDataHandler.listOfUsers;
+    }*/
 
     // Dummy function to show where you would load your users from
     /*private List<userTemplate> loadUsers() {

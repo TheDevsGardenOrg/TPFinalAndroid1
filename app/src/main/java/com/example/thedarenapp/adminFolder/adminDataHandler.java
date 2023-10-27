@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,6 +25,8 @@ import java.util.regex.Pattern;
 
 public class adminDataHandler {
     private static final String FILE_NAME = "UserFile.txt";
+    public static List<userTemplate> listOfUsers = new ArrayList<>();
+
 
     /*Person{firstName='Koukou', lastName='5435435435',
             email='IMsoHot@hotmail.com', birthday='1996-10-26',
@@ -79,11 +82,15 @@ public class adminDataHandler {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
                 String line;
                 while ((line = reader.readLine()) != null) {
+                    Log.d(TAG, "YAYAYAYAYAYAYAYAYAYAY" + null);
                     Log.d(TAG, "Reading line: " + line);
                     Person person = dataLineToPerson(line);
                     if (person != null) {
-                        Log.d(TAG, "Loaded user: " + person.toString());
+                        Log.d(TAG, "Loaded user: " + person);
                         users.add(person);
+                        //listOfUsers.add(new userTemplate(person.getEmail(),person.getFirstName(), person.getLastName(), person.getProfession()));
+                       // Log.d(TAG, "LEt's see here  " + listOfUsers);
+
                     } else {
                         Log.d(TAG, "Failed to create person object from line");
                     }
@@ -155,20 +162,33 @@ public class adminDataHandler {
                 address.getPostalCode() + "," + address.getCountry();
     }
 
+
+    /*Person{firstName='Koukou', lastName='5435435435',
+            email='IMsoHot@hotmail.com', birthday='1996-10-26',
+            address=Address{propertyNumber='256', streetName='dada',
+            province='Quebec', postalCode='J0P3P3', country='Cacnada'},
+        profession='Rich motherfucker'}*/
+
+
+
     private static Person dataLineToPerson(String dataLine) {
-        String[] parts = dataLine.split(",");
-        if (parts.length == 11) {
-            String firstName = parts[0];
-            String lastName = parts[1];
-            String email = parts[2];
-            String password = parts[3];
-            String birthday = parts[4];
-            String profession = parts[5];
-            String propertyNumber = parts[6];
-            String streetName = parts[7];
-            String province = parts[8];
-            String postalCode = parts[9];
-            String country = parts[10];
+        Pattern pattern = Pattern.compile("Person\\{firstName='(.*?)', lastName='(.*?)', email='(.*?)',password='(.*?)', birthday='(.*?)', " +
+                "address=Address\\{propertyNumber='(.*?)', streetName='(.*?)', province='(.*?)', postalCode='(.*?)', country='(.*?)'\\}, " +
+                "profession='(.*?)'\\}");
+
+        Matcher matcher = pattern.matcher(dataLine);
+        if (matcher.find()) {
+            String firstName = matcher.group(1);
+            String lastName = matcher.group(2);
+            String email = matcher.group(3);
+            String password = matcher.group(4);
+            String birthday = matcher.group(5);
+            String propertyNumber = matcher.group(6);
+            String streetName = matcher.group(7);
+            String province = matcher.group(8);
+            String postalCode = matcher.group(9);
+            String country = matcher.group(10);
+            String profession = matcher.group(11);
 
             // Create an Address object
             Address address = new Address(propertyNumber, streetName, province, postalCode, country);
