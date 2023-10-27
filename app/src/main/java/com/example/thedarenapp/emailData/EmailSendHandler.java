@@ -57,7 +57,8 @@ public class EmailSendHandler extends AppCompatActivity {
                 if (subject.equals("") && content.equals("") && to_email.equals("")) {
                     Toast.makeText(EmailSendHandler.this, "All fields are required",Toast.LENGTH_SHORT).show();
                 } else {
-                    sendEmail(subject,content,to_email);
+//                    sendEmail(subject,content,to_email);
+                    enregisterDonnees();
                 }
             }));
         } catch (Exception e) {
