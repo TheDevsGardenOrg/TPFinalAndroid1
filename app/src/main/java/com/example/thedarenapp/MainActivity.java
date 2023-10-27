@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.thedarenapp.adminFolder.AdminActivity;
 import com.example.thedarenapp.adminFolder.AdminUser;
-import com.example.thedarenapp.emailData.EmailSendHandler;
 import com.example.thedarenapp.userJava.InboxActivity;
 import com.example.thedarenapp.userJava.activeUser;
 import com.example.thedarenapp.userJava.userData.ModificationProfil;
