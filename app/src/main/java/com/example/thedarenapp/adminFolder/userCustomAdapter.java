@@ -28,7 +28,7 @@ public class userCustomAdapter extends ArrayAdapter<userTemplate> {
 
         if (user != null) {
             // Access the ImageView and TextViews in the layout
-            ImageView iconView = convertView.findViewById(R.id.icon);
+            ImageView iconView = convertView.findViewById(R.id.iconAdminAV);
             TextView emailText = convertView.findViewById(R.id.courrielNameAV);
             TextView firstNameText = convertView.findViewById(R.id.prenomAV);
             TextView lastNameText = convertView.findViewById(R.id.nomAV);

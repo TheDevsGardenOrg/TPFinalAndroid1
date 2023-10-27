@@ -1,6 +1,9 @@
 package com.example.thedarenapp.adminFolder;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 import com.example.thedarenapp.userJava.Address;
 import com.example.thedarenapp.userJava.Person;
@@ -16,9 +19,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class adminDataHandler {
-    private static final String FILE_NAME = "usersDatabase.txt";
+    private static final String FILE_NAME = "UserFile.txt";
 
     /*Person{firstName='Koukou', lastName='5435435435',
             email='IMsoHot@hotmail.com', birthday='1996-10-26',
@@ -29,7 +34,7 @@ public class adminDataHandler {
     public static boolean saveUser(Person person, Context context) {
         String dataLine = userToDataLine(person);
         try {
-            FileOutputStream fos = context.openFileOutput("usersDatabase.txt", Context.MODE_APPEND);
+            FileOutputStream fos = context.openFileOutput("UserFile.txt", Context.MODE_APPEND);
             PrintWriter pw = new PrintWriter(new OutputStreamWriter(fos));
             pw.println(dataLine);
             pw.close();
@@ -66,6 +71,7 @@ public class adminDataHandler {
         List<Person> users = new ArrayList<>();
         File file = new File(context.getFilesDir(), FILE_NAME);
         if (!file.exists()) {
+            Log.d(TAG, "File not found: " + FILE_NAME);
             return users;
         } else {
             try {
@@ -73,18 +79,39 @@ public class adminDataHandler {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
                 String line;
                 while ((line = reader.readLine()) != null) {
+                    Log.d(TAG, "Reading line: " + line);
                     Person person = dataLineToPerson(line);
                     if (person != null) {
+                        Log.d(TAG, "Loaded user: " + person.toString());
                         users.add(person);
+                    } else {
+                        Log.d(TAG, "Failed to create person object from line");
                     }
                 }
                 reader.close();
-            } catch (IOException var7) {
-                Toast.makeText(context, var7.getMessage(), Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                Log.e(TAG, "Failed to load users", e);
+                Toast.makeText(context, "Failed to load users!", Toast.LENGTH_SHORT).show();
             }
 
             return users;
         }
+    }
+
+    public static List<String> loadAllUsersFromText(Context context) {
+        List<String> userStrings = new ArrayList<>();
+        try {
+            FileInputStream fis = context.openFileInput(FILE_NAME);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                userStrings.add(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return userStrings;
     }
 
     public static boolean deleteUser(String email, Context context) {
@@ -121,15 +148,15 @@ public class adminDataHandler {
 
     private static String userToDataLine(Person person) {
         Address address = person.getAddress();
-        return person.getFirstName() + ";" + person.getLastName() + ";" + person.getEmail() + ";" +
-                person.getPassword() + ";" + person.getBirthday() + ";" +
-                person.getProfession() + ";" + address.getPropertyNumber() + ";" +
-                address.getStreetName() + ";" + address.getProvince() + ";" +
-                address.getPostalCode() + ";" + address.getCountry();
+        return person.getFirstName() + "," + person.getLastName() + "," + person.getEmail() + "," +
+                person.getPassword() + "," + person.getBirthday() + "," +
+                person.getProfession() + "," + address.getPropertyNumber() + "," +
+                address.getStreetName() + "," + address.getProvince() + "," +
+                address.getPostalCode() + "," + address.getCountry();
     }
 
     private static Person dataLineToPerson(String dataLine) {
-        String[] parts = dataLine.split(";");
+        String[] parts = dataLine.split(",");
         if (parts.length == 11) {
             String firstName = parts[0];
             String lastName = parts[1];

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -42,7 +43,7 @@ public class AdminActivity extends AppCompatActivity {
 
         try {
             listViewUsers = findViewById(R.id.listViewUsers);
-            userList = loadUsers(); // Update this method to return List<userTemplate>
+            userList = loadAllUsers(); // Update this method to return List<userTemplate>
             userAdapter = new userCustomAdapter(this, userList);
             listViewUsers.setAdapter(userAdapter);
 
@@ -65,7 +66,7 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
-    private List<userTemplate> loadUsers() {
+    /*private List<userTemplate> loadUsers() {
         List<userTemplate> users = new ArrayList<>();
 
         users.add(new userTemplate("user1@example.com", "John", "Doe", "Engineer"));
@@ -76,6 +77,25 @@ public class AdminActivity extends AppCompatActivity {
         // Add more users as needed
 
         return users;
+    }*/
+
+
+    private List<userTemplate> loadAllUsers() {
+        List<userTemplate> userTemplates = new ArrayList<>();
+        List<Person> persons = adminDataHandler.loadAllUsers(this);
+
+        for (Person person : persons) {
+            userTemplate user = new userTemplate(
+                    person.getEmail(),
+                    person.getFirstName(),
+                    person.getLastName(),
+                    person.getProfession()
+            );
+            userTemplates.add(user);
+        }
+        Log.d("AdminActivity", "Loaded " + persons.size() + " persons");
+        Log.d("AdminActivity", "Loaded " + userTemplates.size() + " users");
+        return userTemplates;
     }
 
     // Dummy function to show where you would load your users from
