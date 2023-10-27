@@ -5,6 +5,13 @@ plugins {
 android {
     namespace 'com.example.thedarenapp'
     compileSdk 33
+    dataBinding{
+        enabled
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
 
     defaultConfig {
         applicationId "com.example.thedarenapp"
