@@ -40,5 +40,10 @@
         android:name="com.example.thedarenapp.ListEmailsWithButton"
         android:label="fragment_list_emails_with_button"
         tools:layout="@layout/fragment_list_emails_with_button" />
+    <fragment
+        android:id="@+id/emailCompose"
+        android:name="com.example.thedarenapp.EmailCompose"
+        android:label="fragment_email_compose"
+        tools:layout="@layout/fragment_email_compose" />
 
 </navigation>
