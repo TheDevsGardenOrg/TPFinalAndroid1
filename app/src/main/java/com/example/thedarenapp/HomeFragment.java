@@ -21,11 +21,23 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
+
+        //go straight to navigation
+        Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
+
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-     View view = inflater.inflate(R.layout.fragment_home, container, false);
-        Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+       //associate button with navigation:
+        view.findViewById(R.id.button_gotologin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
+            }
+        });
+
         return view;
     }
 }
