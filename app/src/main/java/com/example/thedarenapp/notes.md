@@ -29,3 +29,5 @@ String NoCivique; String Rue; String Ville; String Province; String Codepost; St
 
 
 
+# random thughts:
+3d print vesa mount to camera stand adapter
