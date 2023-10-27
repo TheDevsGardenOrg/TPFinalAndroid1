@@ -3,37 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/login">
 
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.thedarenapp.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_listEmailsWithButton"
-            app:destination="@id/listEmailsWithButton" />
-    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.thedarenapp.ui.login.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registrationFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.thedarenapp.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_registrationFragment_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/listEmailsWithButton"
@@ -51,6 +30,18 @@
         tools:layout="@layout/fragment_email_compose" >
         <action
             android:id="@+id/action_emailCompose_to_listEmailsWithButton"
+            app:destination="@id/listEmailsWithButton" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.thedarenapp.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_login_to_listEmailsWithButton"
             app:destination="@id/listEmailsWithButton" />
     </fragment>
 

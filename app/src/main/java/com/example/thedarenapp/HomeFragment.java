@@ -13,31 +13,31 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class HomeFragment extends Fragment {
-    public HomeFragment() {
-
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        NavController navController = Navigation.findNavController(view);
-
-        //go straight to navigation
-        Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
-
-    }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-       //associate button with navigation:
-        view.findViewById(R.id.button_gotologin).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
-            }
-        });
-
-        return view;
-    }
+//    public HomeFragment() {
+//
+//    }
+//
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        NavController navController = Navigation.findNavController(view);
+//
+//        //go straight to navigation
+//        Navigation.findNavController(view).navigate(R.id.);
+//
+//    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_home, container, false);
+//
+//       //associate button with navigation:
+//        view.findViewById(R.id.button_gotologin).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(R.id.);
+//            }
+//        });
+//
+//        return view;
+//    }
 }
