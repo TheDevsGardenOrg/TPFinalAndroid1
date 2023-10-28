@@ -33,8 +33,14 @@ public class UserInboxActivity extends AppCompatActivity {
         CombinedEmailAdapter adapter = new CombinedEmailAdapter(this, emails);
         mListView.setAdapter(adapter);
 
+
+
         Button newEmail = findViewById(R.id.newEmail);
-        newEmail.setOnClickListener(view -> startActivity(new Intent(UserInboxActivity.this, emailDraftActivity.class)));
+        newEmail.setOnClickListener((view -> {
+            Intent sendEmail = new Intent(this, emailDraftActivity.class);
+            sendEmail.putExtra("recipient_email", "Entrez votre courriel");
+            startActivity(sendEmail);
+        }));
     }
 
     @Override

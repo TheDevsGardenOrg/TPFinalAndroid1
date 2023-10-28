@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.thedarenapp.DataHandler.EmailReadHandler;
 import com.example.thedarenapp.DataHandler.EmailUtils;
 import com.example.thedarenapp.R;
 import com.example.thedarenapp.DataHandler.EmailUtils;
@@ -19,33 +20,32 @@ public class emailDraftActivity extends AppCompatActivity {
     EditText editRecipient, editTextName, editTextMessage;
     EmailUtils emailUtils;
 
+    EmailReadHandler EmailReadHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_write);
 
-        // Initialize EmailUtils
         emailUtils = new EmailUtils(this);
 
-        // Get the recipient email address from the intent
         String recipientEmail = getIntent().getStringExtra("recipient_email");
 
-        // Set the recipient email address if it was provided
         if (recipientEmail != null && !recipientEmail.isEmpty()) {
             editRecipient = findViewById(R.id.recipient);
             editRecipient.setText(recipientEmail);
         }
 
-        // calling the action bar
+        // Déclaration de la actionBar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            // showing the back button in action bar
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         editTextName = findViewById(R.id.sujet);
         editTextMessage = findViewById(R.id.message);
 
+        //Envoyer le courriel
         Button soumission = findViewById(R.id.sendButton);
         soumission.setOnClickListener((view) -> {
             String subject = editTextName.getText().toString();
@@ -57,6 +57,7 @@ public class emailDraftActivity extends AppCompatActivity {
             } else {
                 emailUtils.sendEmail(subject, content, to_email);
                 emailUtils.saveEmailToDatabase(subject, content, to_email);
+                EmailReadHandler.readFileAndSaveInstances();
             }
         });
     }

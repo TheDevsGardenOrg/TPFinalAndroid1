@@ -2,6 +2,7 @@ package com.example.thedarenapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +12,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.thedarenapp.DataHandler.ActivityManager;
 import com.example.thedarenapp.DataHandler.fileReaderManager;
 import com.example.thedarenapp.Data.User;
 import com.example.thedarenapp.R;
@@ -21,15 +21,11 @@ public class LoginPageActivity extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passwordEditText;
-    private ActivityManager activityLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-        //Instance of the activity manager
-        activityLauncher = new ActivityManager(this);
-
         this.emailEditText = this.findViewById(R.id.inputCourriel);
         this.passwordEditText = this.findViewById(R.id.inputMotPass);
         Button loginButton = this.findViewById(R.id.connexionBTN);
@@ -37,11 +33,11 @@ public class LoginPageActivity extends AppCompatActivity {
             this.loginUser();
         });
 
-        //Inscrire label as a button
+        //Le viewText Inscrire comme boutton
         TextView inscrireLabel = findViewById(R.id.inscrireLabel);
         inscrireLabel.setOnClickListener(v -> {
             Toast.makeText(LoginPageActivity.this, "Inscription clicked!", Toast.LENGTH_SHORT).show();
-            activityLauncher.launchRegisterPage();
+            startActivity(new Intent(LoginPageActivity.this, RegisterPageActivity.class));
         });
 
     }
@@ -58,11 +54,10 @@ public class LoginPageActivity extends AppCompatActivity {
         String adminEmail = "admin@example.com";
         String adminPassword = "admin1234";
 
-
         RadioGroup accountTypeRadioGroup = this.findViewById(R.id.accountTypeRadioGroup);
         int selectedAccountType = accountTypeRadioGroup.getCheckedRadioButtonId();
-
         //USER PART
+
         if (selectedAccountType == R.id.userButton) {
             User user = fileReaderManager.loadUser(inputEmail, this);
             if (user != null && user.getPassword().equals(inputPassword)) {
@@ -93,10 +88,4 @@ public class LoginPageActivity extends AppCompatActivity {
         }
 
     }
-
-
-
-
-
-
 }

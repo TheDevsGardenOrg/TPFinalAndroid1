@@ -36,12 +36,10 @@ public class ModificationPageActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
 
         final String filePathUser = "/data/data/com.example.thedarenapp/files/UserFile.txt";
-        // calling the action bar
+
+        //Set l'action de bar
         ActionBar actionBar = getSupportActionBar();
-
         actionBar.setTitle("Profile Modification");
-
-        // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         try {

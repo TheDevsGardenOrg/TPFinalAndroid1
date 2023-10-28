@@ -14,7 +14,7 @@
     <string name="textCourriel">Courriel</string>
     <string name="textPass">Mot de Passe</string>
     <string name="inscrireBTN">S\'enregistrer</string>
-    <string name="inscriptionTitle">Inscription</string>
+    <string name="inscriptionTitle">Creation de compte</string>
     <string name="btnRetour">Retour</string>
     <string name="btnSoumettre">Soumettre</string>
     <string name="dateNaissance">Date de naissance</string>

@@ -33,10 +33,9 @@ public class RegisterPageActivity extends AppCompatActivity {
             soumission.setOnClickListener((view -> enregistrerInformations()));
 
             Button retour = findViewById(R.id.btnRetour);
-            retour.setOnClickListener((view -> launchActivityLogin()));
+            retour.setOnClickListener((view ->startActivity(new Intent(RegisterPageActivity.this, LoginPageActivity.class))));
         } catch (Exception e) {
             e.printStackTrace();
-            // Handle the exception, log it, or display an error message.
         }
     }
 
@@ -58,10 +57,7 @@ public class RegisterPageActivity extends AppCompatActivity {
         String prenomText = prenom.getText().toString();
         String nomText = nom.getText().toString();
         String courrielText = courriel.getText().toString();
-
-        // Get the selected date from the DatePicker
         String selectedDate = getSelectedDate(datePicker);
-
         String numeroCivilText = numeroCivil.getText().toString();
         String rueText = rue.getText().toString();
         String codePostalText = codePostal.getText().toString();
@@ -72,7 +68,6 @@ public class RegisterPageActivity extends AppCompatActivity {
 
 
 
-        // Create an Address object
         Address address = new Address(
                 numeroCivilText,
                 rueText,
@@ -81,7 +76,6 @@ public class RegisterPageActivity extends AppCompatActivity {
                 paysText
         );
 
-        // Create a Person object with the user's information, including the address
         Person person = new Person(
                 courrielText,
                 motPassText,
@@ -91,32 +85,31 @@ public class RegisterPageActivity extends AppCompatActivity {
                 address,
                 professionText
         );
-        // Write the person's information to a file
         writePersonToFile(person);
 
 
-        // Fields are filled, you can proceed to the next activity
+        //Retrouver la session précédente
         setResult(Activity.RESULT_OK);
-        //launchActivityLogin();
+        //Remettre à jour les données
+        fileReaderManager.loadAllUsersFromText(this);
         refresh.loadAllUserTemplates();
         finish();
     }
 
-    // Helper method to get the selected date from DatePicker
     private String getSelectedDate(DatePicker datePicker) {
         int year = datePicker.getYear();
-        int month = datePicker.getMonth() + 1; // Months are 0-based
+        int month = datePicker.getMonth() + 1;
         int dayOfMonth = datePicker.getDayOfMonth();
         return String.format("%04d-%02d-%02d", year, month, dayOfMonth);
     }
 
     private void writePersonToFile(Person person) {
         String datas = person.toString();
-        String nomFichier = "UserFile.txt"; // Change the file name as needed
+        String nomFichier = "UserFile.txt";
         try {
             FileOutputStream fos = openFileOutput(nomFichier, MODE_APPEND);
             PrintWriter pw = new PrintWriter(new OutputStreamWriter(fos));
-            pw.println(datas); // Use println to append a new line
+            pw.println(datas);
             pw.close();
             CharSequence text = "enregistré!";
             int duration = Toast.LENGTH_SHORT;
@@ -126,10 +119,5 @@ public class RegisterPageActivity extends AppCompatActivity {
             Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
-    }
-
-    public void launchActivityLogin() {
-        Intent login = new Intent(RegisterPageActivity.this, LoginPageActivity.class);
-        startActivity(login);
     }
 }
