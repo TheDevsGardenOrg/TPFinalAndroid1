@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
-    tools:context=".ui.login.RegistrationFragment">
+    tools:context=".RegisterFragment">
 
     <!-- refactor rename textView11 -> RegistrationPage-->
     <TextView
@@ -294,7 +294,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="#298050"
-        android:enabled="false"
+        android:enabled="true"
         android:text="@string/retourLabel"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -315,7 +315,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="#298050"
-        android:enabled="false"
+        android:enabled="true"
         android:text="@string/soumettreLabel"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
