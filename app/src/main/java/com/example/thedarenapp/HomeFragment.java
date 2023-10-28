@@ -31,10 +31,10 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
        //associate button with navigation:
-        view.findViewById(R.id.button_gotologin).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_listEmailsWithButton);
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_registrationFragment);
             }
         });
 
