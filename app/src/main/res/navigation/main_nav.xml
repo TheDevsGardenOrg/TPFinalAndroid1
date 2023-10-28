@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/login">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.thedarenapp.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
+        android:label="RegistrationFragment"
+        tools:layout="@layout/fragment_registration">
         <action
-            android:id="@+id/action_registrationFragment_to_login"
-            app:destination="@id/login" />
+            android:id="@+id/action_login_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/listEmailsWithButton"
@@ -42,6 +42,21 @@
             app:destination="@id/registrationFragment" />
         <action
             android:id="@+id/action_login_to_listEmailsWithButton"
+            app:destination="@id/listEmailsWithButton" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.thedarenapp.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_homeFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listEmailsWithButton"
             app:destination="@id/listEmailsWithButton" />
     </fragment>
 
