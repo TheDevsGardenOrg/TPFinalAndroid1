@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.thedarenapp.Data.Address;
 import com.example.thedarenapp.Data.Person;
+import com.example.thedarenapp.DataHandler.fileReaderManager;
 import com.example.thedarenapp.R;
 
 import java.io.FileOutputStream;
@@ -20,16 +21,18 @@ import java.io.PrintWriter;
 
 public class RegisterPageActivity extends AppCompatActivity {
 
+    AdminPageActivity refresh = new AdminPageActivity();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.user_registration);
 
-            Button soumission = (Button) findViewById(R.id.btnSoumettre);
+            Button soumission = findViewById(R.id.btnSoumettre);
             soumission.setOnClickListener((view -> enregistrerInformations()));
 
-            Button retour = (Button) findViewById(R.id.btnRetour);
+            Button retour = findViewById(R.id.btnRetour);
             retour.setOnClickListener((view -> launchActivityLogin()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,9 +94,11 @@ public class RegisterPageActivity extends AppCompatActivity {
         // Write the person's information to a file
         writePersonToFile(person);
 
+
         // Fields are filled, you can proceed to the next activity
         setResult(Activity.RESULT_OK);
         //launchActivityLogin();
+        refresh.loadAllUserTemplates();
         finish();
     }
 

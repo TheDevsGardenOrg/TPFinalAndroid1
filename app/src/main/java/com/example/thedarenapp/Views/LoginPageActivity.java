@@ -59,7 +59,7 @@ public class LoginPageActivity extends AppCompatActivity {
         String adminPassword = "admin1234";
 
 
-        RadioGroup accountTypeRadioGroup = (RadioGroup)this.findViewById(R.id.accountTypeRadioGroup);
+        RadioGroup accountTypeRadioGroup = this.findViewById(R.id.accountTypeRadioGroup);
         int selectedAccountType = accountTypeRadioGroup.getCheckedRadioButtonId();
 
         //USER PART

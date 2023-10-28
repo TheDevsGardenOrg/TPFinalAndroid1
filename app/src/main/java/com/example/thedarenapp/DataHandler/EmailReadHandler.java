@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class EmailReadHandler extends AppCompatActivity {
     private Email email = null;
-    ArrayList<Email> emails = new ArrayList<>(); //global variable
+    ArrayList<Email> emails = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,8 @@ public class EmailReadHandler extends AppCompatActivity {
 
 
     public ArrayList<Email> readFileAndSaveInstances() {
-        String fileName = "emailDatabase.txt";
-
-        // problem to fix later 2 hours died here, do not attempt
+        //String fileName = "emailDatabase.txt";
         String filePath = "/data/data/com.example.thedarenapp/files/emailDatabase.txt";
-        //File file = new File(getFilesDir(), fileName);
         try {
             FileInputStream fis = new FileInputStream(filePath);
             Scanner scanner = new Scanner(fis);

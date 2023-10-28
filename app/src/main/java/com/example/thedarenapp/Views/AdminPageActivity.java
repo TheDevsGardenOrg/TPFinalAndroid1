@@ -46,15 +46,25 @@ public class AdminPageActivity extends AppCompatActivity {
         setContentView(R.layout.admin_activity);
 
         try {
+            fileReaderManager.loadAllUsersFromText(this);
+            fileReaderManager.loadAllUsers(this);
             listViewUsers = findViewById(R.id.listViewUsers);
-            userList = loadAllUserTemplates(); // Update this method to return List<userTemplate>
-            userAdapter = new UserAdapter(this, userList);  // Use UserAdapter
+            userList = loadAllUserTemplates();
+
+           /* // Manually append data to userList here
+            Address address = new Address("123 Main St", "City", "State", "12345", "Country");
+            userTemplate newUser = new userTemplate("newuser@email.com", "FirstName", "LastName", "Profession", address);
+            userList.add(newUser); */
+
+            userAdapter = new UserAdapter(this, userList);
             listViewUsers.setAdapter(userAdapter);
+
 
             registerActivityResultLauncher = registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
                     result -> {
                         if (result.getResultCode() == Activity.RESULT_OK) {
+                            //Should have loadallusers from text
                             personList = fileReaderManager.loadAllUsers(this);
                             userAdapter.updateUsers(userList);
                         }
@@ -78,12 +88,12 @@ public class AdminPageActivity extends AppCompatActivity {
         }
     }
 
-    private List<userTemplate> loadAllUserTemplates() {
+    public List<userTemplate> loadAllUserTemplates() {
         List<userTemplate> userTemplates = new ArrayList<>();
         List<Person> persons = fileReaderManager.loadAllUsers(this);
 
         for (Person person : persons) {
-            Address address = person.getAddress();  // Assuming getAddress() returns an Address object
+            Address address = person.getAddress();
             userTemplate user = new userTemplate(
                     person.getEmail(),
                     person.getFirstName(),

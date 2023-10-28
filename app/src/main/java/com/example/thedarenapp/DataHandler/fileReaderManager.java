@@ -70,7 +70,6 @@ public class fileReaderManager {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.d(TAG, "YAYAYAYAYAYAYAYAYAYAY" + null);
                     Log.d(TAG, "Reading line: " + line);
                     Person person = dataLineToPerson(line);
                     if (person != null) {
