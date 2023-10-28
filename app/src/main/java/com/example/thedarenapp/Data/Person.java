@@ -1,4 +1,6 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Data;
+
+import androidx.annotation.NonNull;
 
 public class Person extends User {
     private String firstName;
@@ -55,7 +57,8 @@ public class Person extends User {
     }
 
     public void setEmail(String email) {
-        this.setEmail(email);
+        this.email = email;
+        ;
     }
 
     public void setBirthday(String birthday) {
@@ -70,14 +73,14 @@ public class Person extends User {
         this.profession = profession;
     }
 
+    @Override
     public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + getEmail() + '\'' +
-                ", birthday='" + birthday +'\'' +
-                ", address=" + address + // Use the Address class for the address field
-                ", profession='" + profession + '\'' +
-                '}';
+        return getEmail() + ';' +
+                getPassword() + ';' +
+                firstName + ';' +
+                lastName + ';' +
+                birthday +';' +
+                address +';' +// Use the Address class for the address field
+                profession + ';';
     }
 }

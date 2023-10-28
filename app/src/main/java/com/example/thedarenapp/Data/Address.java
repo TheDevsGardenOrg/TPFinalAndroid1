@@ -1,4 +1,4 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Data;
 
 public class Address {
     private String propertyNumber;
@@ -62,12 +62,10 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "propertyNumber='" + propertyNumber + '\'' +
-                ", streetName='" + streetName + '\'' +
-                ", province='" + province + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", country='" + country + '\'' +
-                '}';
+        return propertyNumber + ';' +
+                streetName + ';' +
+                province + ';' +
+                postalCode + ';' +
+                country;
     }
 }

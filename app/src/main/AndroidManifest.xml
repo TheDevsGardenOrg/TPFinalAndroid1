@@ -13,33 +13,35 @@
         android:theme="@style/Theme.TheDarenApp"
         tools:targetApi="31">
         <activity
-            android:name=".userJava.userData.ModificationProfil"
+            android:name=".Views.ModificationPageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light"
+            />
+        <activity
+            android:name=".Views.LoginPageActivity"
             android:exported="false" />
         <activity
-            android:name=".loginPageActivity"
+            android:name=".Views.RegisterPageActivity"
             android:exported="false" />
         <activity
-            android:name=".userJava.registerPage"
-            android:exported="false" />
-        <activity
-            android:name=".emailData.EmailSendHandler"
+            android:name=".DataHandler.EmailSendHandler"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".adminFolder.AdminActivity"
+            android:name=".Views.AdminPageActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".userJava.pageCourriel"
+            android:name=".Views.emailDraftActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".userJava.InboxActivity"
+            android:name=".Views.UserInboxActivity"
             android:exported="false"
             android:label="@string/title_activity_inbox"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

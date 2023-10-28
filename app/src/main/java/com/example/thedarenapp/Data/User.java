@@ -1,19 +1,16 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Data;
 
-import java.io.Serializable;
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User {
     private String email;
     private String password;
 
-    // constructor
+    // Constructor
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-
-    // getters
+    // Getters
     public String getEmail() {
         return email;
     }
@@ -22,8 +19,7 @@ public class User implements Serializable {
         return password;
     }
 
-
-    // setters
+    // Setters
     public void setEmail(String email) {
         this.email = email;
     }
@@ -32,12 +28,9 @@ public class User implements Serializable {
         this.password = password;
     }
 
-
+    // Optional: You might want to override the toString() method for debugging purposes
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return email + ';' + password;
     }
 }

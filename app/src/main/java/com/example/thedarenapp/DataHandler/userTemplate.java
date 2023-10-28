@@ -1,20 +1,20 @@
-package com.example.thedarenapp.adminFolder;
+package com.example.thedarenapp.DataHandler;
+
+import com.example.thedarenapp.Data.Address;
 
 public class userTemplate {
     private String email;
     private String firstName;
     private String lastName;
     private String profession;
+    private Address address; // Assuming Address is another class you've defined
 
-    public userTemplate() {
-        // Default constructor
-    }
-
-    public userTemplate(String email, String firstName, String lastName, String profession) {
+    public userTemplate(String email, String firstName, String lastName, String profession, Address address) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.profession = profession;
+        this.address = address;
     }
 
     // Getters
@@ -32,6 +32,9 @@ public class userTemplate {
 
     public String getProfession() {
         return profession;
+    }
+    public Address getAddress() {
+        return address;
     }
 
     // Setters
@@ -58,6 +61,7 @@ public class userTemplate {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", profession='" + profession + '\'' +
+                ", address=" + address +
                 '}';
     }
 }

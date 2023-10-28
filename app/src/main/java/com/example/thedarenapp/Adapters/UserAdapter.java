@@ -1,22 +1,31 @@
-package com.example.thedarenapp.adminFolder;
+package com.example.thedarenapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.thedarenapp.Data.Person;
+import com.example.thedarenapp.Data.User;
+import com.example.thedarenapp.DataHandler.userTemplate;
 import com.example.thedarenapp.R;
+import com.example.thedarenapp.Views.emailDraftActivity;
 
 import java.util.List;
 
-public class userListAdapter extends ArrayAdapter<userTemplate> {
+public class UserAdapter extends ArrayAdapter<userTemplate> {
+
     private Context mContext;
     private List<userTemplate> mUsers;
 
-    public userListAdapter(Context context, List<userTemplate> users) {
+    private List<Person> userList;
+
+    public UserAdapter(Context context, List<userTemplate> users) {
         super(context, 0, users);
         mContext = context;
         mUsers = users;
@@ -50,6 +59,22 @@ public class userListAdapter extends ArrayAdapter<userTemplate> {
         TextView professionView = convertView.findViewById(R.id.professionAV);
         professionView.setText(user.getProfession());
 
+        //Setting up the icon clickable
+        ImageView emailIcon = convertView.findViewById(R.id.BtnSendUser);
+        emailIcon.setImageResource(R.drawable.ic_action_email);
+        emailIcon.setOnClickListener(v -> {
+            Toast.makeText(mContext, "Téléchargement de la page en cours..", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(mContext, emailDraftActivity.class);
+            intent.putExtra("recipient_email", user.getEmail());
+            mContext.startActivity(intent);
+        });
+
         return convertView;
     }
+
+    public void updateUsers(List<userTemplate> newUsers) {
+        this.mUsers = newUsers;
+        notifyDataSetChanged();
+    }
+
 }

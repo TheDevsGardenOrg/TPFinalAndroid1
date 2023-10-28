@@ -1,6 +1,6 @@
-package com.example.thedarenapp.userJava;
+package com.example.thedarenapp.Views;
 
-import com.example.thedarenapp.userJava.Person;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,14 +10,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.thedarenapp.Data.Address;
+import com.example.thedarenapp.Data.Person;
+import com.example.thedarenapp.DataHandler.fileReaderManager;
 import com.example.thedarenapp.R;
-import com.example.thedarenapp.loginPageActivity;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class registerPage extends AppCompatActivity {
+public class RegisterPageActivity extends AppCompatActivity {
+
+    AdminPageActivity refresh = new AdminPageActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +29,13 @@ public class registerPage extends AppCompatActivity {
         try {
             setContentView(R.layout.user_registration);
 
-            Button soumission = (Button) findViewById(R.id.btnSoumettre);
+            Button soumission = findViewById(R.id.btnSoumettre);
             soumission.setOnClickListener((view -> enregistrerInformations()));
 
-            Button retour = (Button) findViewById(R.id.btnRetour);
-            retour.setOnClickListener((view -> launchActivityLogin()));
+            Button retour = findViewById(R.id.btnRetour);
+            retour.setOnClickListener((view ->startActivity(new Intent(RegisterPageActivity.this, LoginPageActivity.class))));
         } catch (Exception e) {
             e.printStackTrace();
-            // Handle the exception, log it, or display an error message.
         }
     }
 
@@ -54,10 +57,7 @@ public class registerPage extends AppCompatActivity {
         String prenomText = prenom.getText().toString();
         String nomText = nom.getText().toString();
         String courrielText = courriel.getText().toString();
-
-        // Get the selected date from the DatePicker
         String selectedDate = getSelectedDate(datePicker);
-
         String numeroCivilText = numeroCivil.getText().toString();
         String rueText = rue.getText().toString();
         String codePostalText = codePostal.getText().toString();
@@ -66,7 +66,8 @@ public class registerPage extends AppCompatActivity {
         String professionText = profession.getText().toString();
         String motPassText = motPass.getText().toString();
 
-        // Create an Address object
+
+
         Address address = new Address(
                 numeroCivilText,
                 rueText,
@@ -75,7 +76,6 @@ public class registerPage extends AppCompatActivity {
                 paysText
         );
 
-        // Create a Person object with the user's information, including the address
         Person person = new Person(
                 courrielText,
                 motPassText,
@@ -85,28 +85,31 @@ public class registerPage extends AppCompatActivity {
                 address,
                 professionText
         );
-        // Write the person's information to a file
         writePersonToFile(person);
 
-        // Fields are filled, you can proceed to the next activity
-        launchActivityLogin();
+
+        //Retrouver la session précédente
+        setResult(Activity.RESULT_OK);
+        //Remettre à jour les données
+        fileReaderManager.loadAllUsersFromText(this);
+        refresh.loadAllUserTemplates();
+        finish();
     }
 
-    // Helper method to get the selected date from DatePicker
     private String getSelectedDate(DatePicker datePicker) {
         int year = datePicker.getYear();
-        int month = datePicker.getMonth() + 1; // Months are 0-based
+        int month = datePicker.getMonth() + 1;
         int dayOfMonth = datePicker.getDayOfMonth();
         return String.format("%04d-%02d-%02d", year, month, dayOfMonth);
     }
 
     private void writePersonToFile(Person person) {
         String datas = person.toString();
-        String nomFichier = "UserFile.txt"; // Change the file name as needed
+        String nomFichier = "UserFile.txt";
         try {
             FileOutputStream fos = openFileOutput(nomFichier, MODE_APPEND);
             PrintWriter pw = new PrintWriter(new OutputStreamWriter(fos));
-            pw.println(datas); // Use println to append a new line
+            pw.println(datas);
             pw.close();
             CharSequence text = "enregistré!";
             int duration = Toast.LENGTH_SHORT;
@@ -116,10 +119,5 @@ public class registerPage extends AppCompatActivity {
             Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
-    }
-
-    public void launchActivityLogin() {
-        Intent login = new Intent(registerPage.this, loginPageActivity.class);
-        startActivity(login);
     }
 }

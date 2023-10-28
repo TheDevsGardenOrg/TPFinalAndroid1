@@ -1,4 +1,4 @@
-package com.example.thedarenapp.emailData;
+package com.example.thedarenapp.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,15 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.thedarenapp.Data.Email;
 import com.example.thedarenapp.R;
 
 import java.util.List;
 
-public class EmailAdapter extends ArrayAdapter<Email> {
+public class CombinedEmailAdapter extends ArrayAdapter<Email> {
+
     private Context mContext;
     private List<Email> mEmails;
 
-    public EmailAdapter(Context context, List<Email> emails) {
+    public CombinedEmailAdapter(Context context, List<Email> emails) {
         super(context, 0, emails);
         mContext = context;
         mEmails = emails;
@@ -30,29 +32,23 @@ public class EmailAdapter extends ArrayAdapter<Email> {
 
         Email email = mEmails.get(position);
 
-
-
         // Set the icon image here
-        //TextView senderNameView = convertView.findViewById(R.id.senderNameText);
-        //senderNameView.setText(email.getSender());
-
-        //Default icon for the moment
         ImageView iconView = convertView.findViewById(R.id.icon);
         iconView.setImageResource(R.drawable.ic_action_name);
 
-        //Email you wrote to
+        // Email you wrote to
         TextView recipientView = convertView.findViewById(R.id.recipientText);
         recipientView.setText(email.getRecipient());
 
-        //Name of the email
+        // Name of the email
         TextView subjectView = convertView.findViewById(R.id.subjectText);
         subjectView.setText(email.getSujet());
 
-        //Contenu du message que l'utilisateur a écrit
+        // Contenu du message que l'utilisateur a écrit
         TextView messageView = convertView.findViewById(R.id.messageText);
         messageView.setText(email.getMessage());
 
-        //The time of the message sent
+        // The time of the message sent
         TextView timeView = convertView.findViewById(R.id.timeText);
         timeView.setText(email.getDateString());
 

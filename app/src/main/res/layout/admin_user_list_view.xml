@@ -5,19 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp"
+    android:padding="20dp"
     >
 
     <ImageView
         android:id="@+id/iconAdminAV"
-        android:layout_width="48dp"
-        android:layout_height="65dp"
-        android:layout_marginEnd="16dp"
-        />
+        android:layout_width="66dp"
+        android:layout_height="92dp"
+        android:layout_marginEnd="16dp" />
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TableRow
             android:layout_width="match_parent"
@@ -28,41 +27,62 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder1"
-                android:textSize="20sp" />
+                android:textSize="17sp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical">
 
             <TextView
                 android:id="@+id/prenomAV"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:text="@string/placeholder2"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/nomAV"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder2"
-                android:textSize="16sp" />
         </TableRow>
+
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical">
+
+            <TextView
+                android:id="@+id/nomAV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nomLabel"
+                android:textSize="16sp" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="42dp">
 
             <TextView
                 android:id="@+id/professionAV"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
                 android:text="@string/placeholder3"
                 android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/BtnSendUser"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:padding="4dp"
+                android:src="@drawable/ic_action_email"
+                />
+
 
         </TableRow>
 

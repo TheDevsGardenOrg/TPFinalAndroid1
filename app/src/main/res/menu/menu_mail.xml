@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_envoyerAdmin"
+        android:title="@string/adminSend"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+
+
     <item android:id="@+id/action_parametres"
         android:title="@string/parametre"
         android:orderInCategory="100"
         app:showAsAction="never"
         />
-    <item android:id="@+id/action_mail"
+    <item android:id="@+id/iconPerson"
         android:title="@string/action_mail"
         android:orderInCategory="100"
         android:icon="@drawable/ic_action_name"

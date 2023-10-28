@@ -1,7 +1,8 @@
-package com.example.thedarenapp;
+package com.example.thedarenapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,17 +12,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.thedarenapp.adminFolder.AdminActivity;
-import com.example.thedarenapp.adminFolder.adminDataHandler;
-import com.example.thedarenapp.userJava.InboxActivity;
-import com.example.thedarenapp.userJava.User;
-import com.example.thedarenapp.userJava.registerPage;
+import com.example.thedarenapp.DataHandler.fileReaderManager;
+import com.example.thedarenapp.Data.User;
+import com.example.thedarenapp.R;
 
 
-
-
-
-public class loginPageActivity extends AppCompatActivity {
+public class LoginPageActivity extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passwordEditText;
@@ -30,24 +26,22 @@ public class loginPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
-
-        //This part is to log in actual data
-        this.emailEditText = (EditText)this.findViewById(R.id.inputCourriel);
-        this.passwordEditText = (EditText)this.findViewById(R.id.inputMotPass);
-        Button loginButton = (Button)this.findViewById(R.id.connexionBTN);
+        this.emailEditText = this.findViewById(R.id.inputCourriel);
+        this.passwordEditText = this.findViewById(R.id.inputMotPass);
+        Button loginButton = this.findViewById(R.id.connexionBTN);
         loginButton.setOnClickListener((v) -> {
             this.loginUser();
         });
 
-
-
-        TextView yoyo = findViewById(R.id.inscrireLabel);
-        yoyo.setOnClickListener(v -> {
-            Toast.makeText(loginPageActivity.this, "Inscription clicked!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(loginPageActivity.this, registerPage.class));
+        //Le viewText Inscrire comme boutton
+        TextView inscrireLabel = findViewById(R.id.inscrireLabel);
+        inscrireLabel.setOnClickListener(v -> {
+            Toast.makeText(LoginPageActivity.this, "Inscription clicked!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginPageActivity.this, RegisterPageActivity.class));
         });
+
     }
+
 
 
 
@@ -59,18 +53,16 @@ public class loginPageActivity extends AppCompatActivity {
         String inputPassword = this.passwordEditText.getText().toString().trim();
         String adminEmail = "admin@example.com";
         String adminPassword = "admin1234";
-        //String userEmail = "user@example.com";
-        //String userPassword = "user1234";
 
-        RadioGroup accountTypeRadioGroup = (RadioGroup)this.findViewById(R.id.accountTypeRadioGroup);
+        RadioGroup accountTypeRadioGroup = this.findViewById(R.id.accountTypeRadioGroup);
         int selectedAccountType = accountTypeRadioGroup.getCheckedRadioButtonId();
-
         //USER PART
+
         if (selectedAccountType == R.id.userButton) {
-            User user = adminDataHandler.loadUser(inputEmail, this);
+            User user = fileReaderManager.loadUser(inputEmail, this);
             if (user != null && user.getPassword().equals(inputPassword)) {
                 Log.d("LoginActivity", "Login successful as User");
-                Intent userActivityIntent = new Intent(this, InboxActivity.class);
+                Intent userActivityIntent = new Intent(this, UserInboxActivity.class);
                 Toast.makeText(this,"Connexion vers la nouvelle page...",Toast.LENGTH_SHORT).show();
                 this.startActivity(userActivityIntent);
                 this.finish();
@@ -85,7 +77,7 @@ public class loginPageActivity extends AppCompatActivity {
             if (adminEmail.equalsIgnoreCase(inputEmail) && adminPassword.equals(inputPassword)) {
                 Log.d("LoginActivity", "Login successful as Admin");
                         //Doit mettre une page admin
-                Intent adminActivityIntent = new Intent(this, AdminActivity.class);
+                Intent adminActivityIntent = new Intent(this, AdminPageActivity.class);
                 Toast.makeText(this,"Connexion vers la nouvelle page...",Toast.LENGTH_SHORT).show();
                 this.startActivity(adminActivityIntent);
                 this.finish();
@@ -96,7 +88,4 @@ public class loginPageActivity extends AppCompatActivity {
         }
 
     }
-
-
-
 }
