@@ -15,29 +15,23 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.thedarenapp.R;
-import com.example.thedarenapp.databinding.ActivityMainBinding;
 import com.example.thedarenapp.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
-
     private Button register, login;
-//    public ActivityMainBinding  binding;
+    private FragmentLoginBinding binding;
 
-    public FragmentLoginBinding binding ;
     public LoginFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        FragmentLoginBinding.inflate(inflater);
-        // Inflate the layout for this fragment
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-
-
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
         //associate button with navigation:
         binding.goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
