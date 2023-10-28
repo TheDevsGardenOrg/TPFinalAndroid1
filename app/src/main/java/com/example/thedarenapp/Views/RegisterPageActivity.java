@@ -1,5 +1,6 @@
 package com.example.thedarenapp.Views;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -66,6 +67,8 @@ public class RegisterPageActivity extends AppCompatActivity {
         String professionText = profession.getText().toString();
         String motPassText = motPass.getText().toString();
 
+
+
         // Create an Address object
         Address address = new Address(
                 numeroCivilText,
@@ -89,7 +92,9 @@ public class RegisterPageActivity extends AppCompatActivity {
         writePersonToFile(person);
 
         // Fields are filled, you can proceed to the next activity
-        launchActivityLogin();
+        setResult(Activity.RESULT_OK);
+        //launchActivityLogin();
+        finish();
     }
 
     // Helper method to get the selected date from DatePicker

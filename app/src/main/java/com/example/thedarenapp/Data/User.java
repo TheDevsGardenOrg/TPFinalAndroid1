@@ -31,9 +31,6 @@ public class User {
     // Optional: You might want to override the toString() method for debugging purposes
     @Override
     public String toString() {
-        return "User{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return email + ';' + password;
     }
 }

@@ -1,9 +1,12 @@
 package com.example.thedarenapp.Views;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +19,7 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.thedarenapp.Adapters.UserAdapter;
-import com.example.thedarenapp.DataHandler.adminDataHandler;
+import com.example.thedarenapp.DataHandler.fileReaderManager;
 import com.example.thedarenapp.DataHandler.userTemplate;
 import com.example.thedarenapp.Data.Address;
 import com.example.thedarenapp.Data.Person;
@@ -31,7 +34,9 @@ public class AdminPageActivity extends AppCompatActivity {
     private UserAdapter userAdapter;  // Change to UserAdapter
     private List<userTemplate> userList;
 
+    private List<Person> personList;
 
+    private ActivityResultLauncher<Intent> registerActivityResultLauncher;
     PopupWindow popUp;
     boolean click = true;
 
@@ -42,9 +47,18 @@ public class AdminPageActivity extends AppCompatActivity {
 
         try {
             listViewUsers = findViewById(R.id.listViewUsers);
-            userList = loadAllUsers(); // Update this method to return List<userTemplate>
+            userList = loadAllUserTemplates(); // Update this method to return List<userTemplate>
             userAdapter = new UserAdapter(this, userList);  // Use UserAdapter
             listViewUsers.setAdapter(userAdapter);
+
+            registerActivityResultLauncher = registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
+                    result -> {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            personList = fileReaderManager.loadAllUsers(this);
+                            userAdapter.updateUsers(userList);
+                        }
+                    });
 
             listViewUsers.setOnItemClickListener((parent, view, position, id) -> {
                 userTemplate selectedUser = userAdapter.getItem(position);
@@ -64,9 +78,9 @@ public class AdminPageActivity extends AppCompatActivity {
         }
     }
 
-    private List<userTemplate> loadAllUsers() {
+    private List<userTemplate> loadAllUserTemplates() {
         List<userTemplate> userTemplates = new ArrayList<>();
-        List<Person> persons = adminDataHandler.loadAllUsers(this);
+        List<Person> persons = fileReaderManager.loadAllUsers(this);
 
         for (Person person : persons) {
             Address address = person.getAddress();  // Assuming getAddress() returns an Address object
@@ -80,7 +94,7 @@ public class AdminPageActivity extends AppCompatActivity {
             userTemplates.add(user);
         }
         Log.d("AdminPageActivity", "Loaded " + persons.size() + " persons");
-        Log.d("AdminPageActivity", "Loaded " + userTemplates.size() + " users");
+        Log.d("AdminPageActivity", "Loaded " + userTemplates.size() + " userTemplates");
         return userTemplates;
     }
 
@@ -143,11 +157,8 @@ public class AdminPageActivity extends AppCompatActivity {
         if (id == R.id.action_ajouterUser) {
             ajouterUser();
             return true;
-        } else if (id == R.id.action_mail) {
-            logout();
-            return true;
         } else if (id == R.id.déconnecterOption) {
-            consulterUserInscrit();
+            logout();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -155,8 +166,8 @@ public class AdminPageActivity extends AppCompatActivity {
 
 
     private void ajouterUser() {
-        Intent logout = new Intent(this, RegisterPageActivity.class);
-        startActivity(logout);
+        Intent intent = new Intent(this, RegisterPageActivity.class);
+        registerActivityResultLauncher.launch(intent);
     }
 
 
@@ -168,7 +179,7 @@ public class AdminPageActivity extends AppCompatActivity {
         confirmationDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (adminDataHandler.deleteUser(userToDelete.getEmail(), AdminPageActivity.this)) {
+                if (fileReaderManager.deleteUser(userToDelete.getEmail(), AdminPageActivity.this)) {
                     userList.remove(userToDelete);  // Assuming userList is a List of userTemplate objects
                     userAdapter.notifyDataSetChanged();  // Notify the adapter about the data change
                     Toast.makeText(AdminPageActivity.this, "Utilisateur supprimé", Toast.LENGTH_SHORT).show();
@@ -182,18 +193,10 @@ public class AdminPageActivity extends AppCompatActivity {
     }
 
 
-    private void consulterUser() {
-        Toast.makeText(this, "Voir utilisateur sélectionné", Toast.LENGTH_SHORT).show();
-    }
-
-    private void consulterUserInscrit() {
-        Toast.makeText(this, "Déconnexion en cours...", Toast.LENGTH_SHORT).show();
-        Intent logout = new Intent(AdminPageActivity.this, LoginPageActivity.class);
-        startActivity(logout);
-    }
 
     private void logout() {
-        Toast.makeText(this, "Envoyer mail sélectionné", Toast.LENGTH_SHORT).show();
+        Intent logout = new Intent(AdminPageActivity.this, LoginPageActivity.class);
+        startActivity(logout);
     }
 
 }

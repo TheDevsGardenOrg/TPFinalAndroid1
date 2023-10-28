@@ -1,5 +1,7 @@
 package com.example.thedarenapp.Data;
 
+import androidx.annotation.NonNull;
+
 public class Person extends User {
     private String firstName;
     private String lastName;
@@ -71,11 +73,12 @@ public class Person extends User {
         this.profession = profession;
     }
 
+    @Override
     public String toString() {
-        return  firstName + ';' +
+        return getEmail() + ';' +
+                getPassword() + ';' +
+                firstName + ';' +
                 lastName + ';' +
-                getEmail() + ';' +
-                getPassword() + ';' + // Assuming there is a getPassword method in User class
                 birthday +';' +
                 address +';' +// Use the Address class for the address field
                 profession + ';';

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thedarenapp.DataHandler.ActivityManager;
-import com.example.thedarenapp.DataHandler.adminDataHandler;
+import com.example.thedarenapp.DataHandler.fileReaderManager;
 import com.example.thedarenapp.Data.User;
 import com.example.thedarenapp.R;
 
@@ -30,9 +30,9 @@ public class LoginPageActivity extends AppCompatActivity {
         //Instance of the activity manager
         activityLauncher = new ActivityManager(this);
 
-        this.emailEditText = (EditText) this.findViewById(R.id.inputCourriel);
-        this.passwordEditText = (EditText) this.findViewById(R.id.inputMotPass);
-        Button loginButton = (Button) this.findViewById(R.id.connexionBTN);
+        this.emailEditText = this.findViewById(R.id.inputCourriel);
+        this.passwordEditText = this.findViewById(R.id.inputMotPass);
+        Button loginButton = this.findViewById(R.id.connexionBTN);
         loginButton.setOnClickListener((v) -> {
             this.loginUser();
         });
@@ -64,7 +64,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
         //USER PART
         if (selectedAccountType == R.id.userButton) {
-            User user = adminDataHandler.loadUser(inputEmail, this);
+            User user = fileReaderManager.loadUser(inputEmail, this);
             if (user != null && user.getPassword().equals(inputPassword)) {
                 Log.d("LoginActivity", "Login successful as User");
                 Intent userActivityIntent = new Intent(this, UserInboxActivity.class);

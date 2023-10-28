@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thedarenapp.Data.Person;
+import com.example.thedarenapp.Data.User;
 import com.example.thedarenapp.DataHandler.userTemplate;
 import com.example.thedarenapp.R;
 import com.example.thedarenapp.Views.emailDraftActivity;
@@ -20,6 +22,8 @@ public class UserAdapter extends ArrayAdapter<userTemplate> {
 
     private Context mContext;
     private List<userTemplate> mUsers;
+
+    private List<Person> userList;
 
     public UserAdapter(Context context, List<userTemplate> users) {
         super(context, 0, users);
@@ -67,4 +71,10 @@ public class UserAdapter extends ArrayAdapter<userTemplate> {
 
         return convertView;
     }
+
+    public void updateUsers(List<userTemplate> newUsers) {
+        this.mUsers = newUsers;
+        notifyDataSetChanged();
+    }
+
 }

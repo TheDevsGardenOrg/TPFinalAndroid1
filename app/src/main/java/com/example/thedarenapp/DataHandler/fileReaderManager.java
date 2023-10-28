@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class adminDataHandler {
+public class fileReaderManager {
     private static final String FILE_NAME = "UserFile.txt";
 
     public static boolean saveUser(Person person, Context context) {
@@ -76,9 +76,6 @@ public class adminDataHandler {
                     if (person != null) {
                         Log.d(TAG, "Loaded user: " + person);
                         users.add(person);
-                        //listOfUsers.add(new userTemplate(person.getEmail(),person.getFirstName(), person.getLastName(), person.getProfession()));
-                       // Log.d(TAG, "LEt's see here  " + listOfUsers);
-
                     } else {
                         Log.d(TAG, "Failed to create person object from line");
                     }
@@ -143,29 +140,26 @@ public class adminDataHandler {
 
     private static String userToDataLine(Person person) {
         Address address = person.getAddress();
-        return person.getFirstName() + "," + person.getLastName() + "," + person.getEmail() + "," +
-                person.getPassword() + "," + person.getBirthday() + "," +
-                person.getProfession() + "," + address.getPropertyNumber() + "," +
-                address.getStreetName() + "," + address.getProvince() + "," +
-                address.getPostalCode() + "," + address.getCountry();
+        return person.getEmail() + ";" + person.getPassword()+ ";" + person.getFirstName() + ";" +
+                person.getLastName() + ";" + person.getBirthday() + ";" + address.getPropertyNumber() + ";" +
+                address.getStreetName() + ";" + address.getProvince() + ";" +
+                address.getPostalCode() + ";" + address.getCountry() + ";" + person.getProfession();
     }
-
-
+    // Create an Address object
     private static Person dataLineToPerson(String dataLine) {
         String[] parts = dataLine.split(";");
         if (parts.length == 11) {
-            String firstName = parts[0];
-            String lastName = parts[1];
-            String email = parts[2];
-            String password = parts[3];
+            String email = parts[0];
+            String password = parts[1];
+            String firstName = parts[2];
+            String lastName = parts[3];
             String birthday = parts[4];
-            String profession = parts[5];
-            String propertyNumber = parts[6];
-            String streetName = parts[7];
-            String province = parts[8];
-            String postalCode = parts[9];
-            String country = parts[10];
-
+            String  propertyNumber = parts[5];
+            String streetName = parts[6];
+            String province = parts[7];
+            String postalCode = parts[8];
+            String country = parts[9];
+            String profession = parts[10];
             // Create an Address object
             Address address = new Address(propertyNumber, streetName, province, postalCode, country);
 
